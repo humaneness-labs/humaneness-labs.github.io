@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101018">
+    <meta name="description" content="A European research lab building the behavior layer for AI — beginning with voice and extending to embodied intelligence.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Humaneness Labs — The behavior layer for AI">
+    <meta property="og:description" content="Models of attention, emotion, perception, and social context that make AI interaction feel present.">
+    <meta property="og:image" content="assets/og/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Humaneness Labs — The behavior layer for AI">
+    <meta name="twitter:description" content="Models of attention, emotion, perception, and social context that make AI interaction feel present.">
+    <meta name="twitter:image" content="assets/og/og-image.png">
+    <title>Humaneness Labs — The behavior layer for AI</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="preload" href="assets/fonts/newsreader-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/schibsted-grotesk-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="assets/css/main.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" aria-label="Primary">
+      <a class="wordmark" href="#hero" aria-label="Humaneness Labs, home">Humaneness Labs</a>
+      <a class="text-link site-header__contact" href="#contact">Research partnerships</a>
+    </header>
+
+    <canvas class="living-line living-line--fixed" id="living-line" role="img" aria-label="A thin line moving like a breathing voice"></canvas>
+
+    <main id="main">
+      <section class="hero shell" id="hero" aria-labelledby="hero-title">
+        <div class="hero__content">
+          <p class="eyebrow">A research lab · Europe</p>
+          <h1 id="hero-title" aria-label="Intelligence is not enough. AI needs a way of being.">
+            <span data-hero-line>Intelligence is not enough.</span>
+            <em data-hero-line data-pause>AI needs a way of being.</em>
+          </h1>
+          <p class="hero__lede">Humaneness Labs is building the behavior layer for AI — models of attention, emotion, perception, and social context that make interaction feel present.</p>
+        </div>
+        <p class="line-caption">it breathes. move your cursor closer.</p>
+        <span class="scroll-cue" aria-hidden="true"></span>
+      </section>
+
+      <section class="section section--gap shell" id="gap" aria-labelledby="gap-title">
+        <div class="section__inner">
+          <p class="eyebrow" data-reveal>01 · The missing layer</p>
+          <h2 id="gap-title" data-reveal>Capable, expressive —<br><em>and still not quite there.</em></h2>
+          <p data-reveal>AI can speak fluently, read a room, generate a face, and move through the physical world. Yet even the strongest systems often feel subtly performed: the voice that is too polished, the pause that arrives on cue, the expression without a thought behind it.</p>
+          <p class="pull-line" data-reveal>The gap is not more expression. It is behavior with something beneath it.</p>
+        </div>
+      </section>
+
+      <section class="section section--beneath shell" id="beneath" aria-labelledby="beneath-title">
+        <div class="streams" aria-hidden="true">
+          <span class="stream stream--rose"></span>
+          <span class="stream stream--amber"></span>
+          <span class="stream stream--blue"></span>
+        </div>
+        <div class="section__inner">
+          <p class="eyebrow" data-reveal>02 · Beneath behavior</p>
+          <h2 id="beneath-title" data-reveal>We are never<br><em>only one thing.</em></h2>
+          <div class="section__body">
+            <p data-reveal>Human behavior does not come from a single emotional label. It emerges from many streams moving at once: attention, emotion, memory, anticipation, perception, physical sensation, social context, and thought.</p>
+            <p data-reveal>We can be warm while tired, amused while distracted, curious while uncertain. We read a voice, a face, a room, and our own body at the same time. Thoughts interfere. Attention wanders. We hesitate, recover, and change our minds.</p>
+          </div>
+          <p class="pull-line" data-reveal>These imperfections are not noise. They are part of what makes behavior feel alive.</p>
+        </div>
+      </section>
+
+      <section class="section section--speech shell" id="speech" aria-labelledby="speech-title">
+        <div class="section__inner">
+          <p class="eyebrow" data-reveal>03 · The first wedge</p>
+          <h2 id="speech-title" data-reveal>Start where the difference<br><em>can be heard.</em></h2>
+          <div class="section__body">
+            <p data-reveal>We are beginning with voice because it reveals far more than words. Timing, breath, rhythm, effort, hesitation, interruption, and tiny shifts in articulation all expose what is happening beneath the surface.</p>
+            <p data-reveal>Rather than adding emotion after the fact, we are researching systems in which expressive behavior emerges from context and changing internal state.</p>
+          </div>
+
+          <div class="voice-demo" data-reveal>
+            <div class="voice-demo__topline">
+              <p class="voice-demo__label">A voice with an inner life</p>
+              <div class="moods" aria-label="Choose a behavior" role="group">
+                <button class="mood is-active" type="button" aria-pressed="true" data-mood="calm">Calm</button>
+                <button class="mood" type="button" aria-pressed="false" data-mood="distracted">Distracted</button>
+                <button class="mood" type="button" aria-pressed="false" data-mood="hesitant">Hesitant</button>
+              </div>
+            </div>
+            <canvas class="living-line living-line--demo" id="voice-line" role="img" aria-label="An interactive line demonstrating calm, distracted, and hesitant behavior"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--beyond shell" id="beyond" aria-labelledby="beyond-title">
+        <div class="section__inner">
+          <p class="eyebrow" data-reveal>04 · One behavior layer</p>
+          <h2 id="beyond-title" data-reveal>Voice is the beginning,<br><em>not the boundary.</em></h2>
+          <div class="capability-list" role="list">
+            <div class="capability" role="listitem" data-reveal style="--i: 0"><span>Voice</span><p>Speech shaped by context, attention, emotion, and interruption.</p></div>
+            <div class="capability" role="listitem" data-reveal style="--i: 1"><span>Vision</span><p>Perception of gaze, posture, expression, gesture, and social signals.</p></div>
+            <div class="capability" role="listitem" data-reveal style="--i: 2"><span>Video</span><p>Reactions that unfold from state instead of playing as animation.</p></div>
+            <div class="capability" role="listitem" data-reveal style="--i: 3"><span>Agents</span><p>Digital beings with coherent attention, memory, and presence.</p></div>
+            <div class="capability" role="listitem" data-reveal style="--i: 4"><span>Robotics</span><p>Movement and interaction that respond fluidly to people and place.</p></div>
+          </div>
+          <p class="platform-line" data-reveal>The long-term system connects <em>perception, internal state, and action</em> in one continuous loop.</p>
+        </div>
+      </section>
+
+      <section class="section section--presence shell" id="presence" aria-labelledby="presence-title">
+        <div class="section__inner">
+          <p class="eyebrow" data-reveal>05 · The direction</p>
+          <h2 id="presence-title" data-reveal>From simulation<br><em>to presence.</em></h2>
+          <p class="presence-copy" data-reveal>Our goal is not to make machines better at pretending to be human. It is to understand the computational principles that make interaction feel authentic — and build systems that can use them in context.</p>
+          <div class="direction-lines" aria-label="Our direction">
+            <p data-reveal style="--i: 0">From imitation <em>toward understanding.</em></p>
+            <p data-reveal style="--i: 1">From performance <em>toward presence.</em></p>
+            <p data-reveal style="--i: 2">From realism <em>toward genuine interaction.</em></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="soul shell" id="soul" aria-labelledby="soul-title">
+        <h2 id="soul-title" data-reveal>We are building the soul<br><em>of the machines of the future.</em></h2>
+      </section>
+
+      <section class="contact shell" id="contact" aria-labelledby="contact-title">
+        <div>
+          <p class="eyebrow" data-reveal>Research partnerships</p>
+          <h2 id="contact-title" data-reveal>If you are working on the future of voice or embodied intelligence, <em>we should talk.</em></h2>
+        </div>
+        <a class="email-link" data-email data-user="hello" data-domain="humanenesslabs.com" href="#" data-reveal>hello [at] humanenesslabs.com</a>
+      </section>
+    </main>
+
+    <footer class="site-footer shell">
+      <p>Humaneness Labs — building quietly.</p>
+      <p class="site-footer__meta">© 2026 · Made in Europe</p>
+    </footer>
+
+    <script src="assets/js/livingline.js"></script>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
