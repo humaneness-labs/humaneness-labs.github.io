@@ -55,6 +55,10 @@
       this.pointer = { x: -999, y: -999, lift: 0 };
       this.simTime = 0;
       this.soul = false;
+      this.docked = false;
+      this.dockTarget = 0;
+      this.dockProgress = 0;
+      this.dockShift = 0;
       this.hesitationStart = 0;
       this.nextHesitation = performance.now() + randomBetween(6000, 14000);
       this.distractionStart = 0;
@@ -86,10 +90,12 @@
       const rect = this.canvas.getBoundingClientRect();
       this.width = rect.width;
       this.height = rect.height;
+      this.homeCenter = rect.top + this.height / 2 - this.dockShift;
       this.dpr = Math.min(devicePixelRatio || 1, 1.5);
       this.canvas.width = Math.max(1, Math.round(this.width * this.dpr));
       this.canvas.height = Math.max(1, Math.round(this.height * this.dpr));
       this.context.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
+      this.positionDock();
       this.render(performance.now(), 0);
     }
 
@@ -116,8 +122,38 @@
       }
     }
 
+    setDocked(isDocked) {
+      this.docked = isDocked;
+      this.dockTarget = isDocked ? 1 : 0;
+      if (isDocked) {
+        this.target.opacity = 1;
+        this.target.period = 6000;
+        this.hesitationStart = 0;
+        this.distractionStart = 0;
+      }
+      if (reducedQuery.matches) {
+        this.dockProgress = this.dockTarget;
+        this.positionDock();
+        this.render(performance.now(), 0);
+      } else start();
+    }
+
+    positionDock() {
+      if (!this.fixed || !this.homeCenter) return;
+      const dockCenter = Math.max(96, innerHeight * .17);
+      this.dockShift = (dockCenter - this.homeCenter) * this.dockProgress;
+      this.canvas.style.setProperty("--dock-shift", this.dockShift.toFixed(2) + "px");
+      this.canvas.classList.toggle("is-docked", this.docked || this.dockProgress > .02);
+    }
+
     update(now, delta) {
-      if (this.fixed && !this.soul) {
+      const dockLerp = 1 - Math.pow(.997, delta);
+      this.dockProgress += (this.dockTarget - this.dockProgress) * dockLerp;
+      this.positionDock();
+      if (this.fixed && this.dockProgress > .01) {
+        this.target.opacity = 1;
+        this.target.period = 6000;
+      } else if (this.fixed && !this.soul) {
         const progress = Math.min(1, scrollY / (innerHeight * 1.2));
         this.target.opacity = 1 - progress * .75;
         this.target.amplitude = this.baseAmplitude * (1 - progress * .5);
@@ -132,7 +168,7 @@
 
     hesitation(now) {
       const config = this.moodConfig;
-      const enabled = this.soul ? false : (config ? config.hesitate : this.options.hesitation);
+      const enabled = (this.soul || this.dockProgress > .02) ? false : (config ? config.hesitate : this.options.hesitation);
       if (!enabled) return { amplitude: 1, speed: 1 };
       const min = config ? config.hesitationMin : 6000;
       const max = config ? config.hesitationMax : 14000;
@@ -156,7 +192,7 @@
     distraction(now, x) {
       const config = this.moodConfig;
       const enabled = this.options.distraction || (config && config.distractionMin < 10000);
-      if (!enabled || this.soul) return 0;
+      if (!enabled || this.soul || this.dockProgress > .02) return 0;
       const min = config ? config.distractionMin : 15000;
       const max = config ? config.distractionMax : 30000;
       if (!this.distractionStart && now >= this.nextDistraction) this.distractionStart = now;
@@ -183,7 +219,8 @@
       const breath = reducedQuery.matches ? .72 : .55 + .45 * Math.sin((now / period) * Math.PI * 2);
       const rect = this.canvas.getBoundingClientRect();
       const pointerX = this.pointer.x - rect.left;
-      const proximity = finePointer ? Math.max(0, 1 - Math.abs(this.pointer.y - (rect.top + this.height / 2)) / 120) : 0;
+      const waveStrength = 1 - this.dockProgress;
+      const proximity = finePointer && waveStrength > .98 ? Math.max(0, 1 - Math.abs(this.pointer.y - (rect.top + this.height / 2)) / 120) : 0;
       this.pointer.lift += (proximity * this.current.amplitude * .85 - this.pointer.lift) * .08;
       const mid = this.height / 2;
       const path = new Path2D();
@@ -194,7 +231,7 @@
         const speed = this.current.noise;
         const noise = .6 * Math.sin(normalized * 5.7 + t * .7 * speed) + .3 * Math.sin(normalized * 14.5 - t * .4 * speed) + .15 * Math.sin(normalized * 32 + t * 1.3 * speed);
         const cursor = this.pointer.lift * Math.exp(-Math.pow(x - pointerX, 2) / (2 * 72 * 72));
-        const y = mid + this.current.amplitude * breath * hesitation.amplitude * taper * noise + this.distraction(now, x) - cursor;
+        const y = mid + waveStrength * (this.current.amplitude * breath * hesitation.amplitude * taper * noise + this.distraction(now, x) - cursor);
         if (i === 0) path.moveTo(x, y); else path.lineTo(x, y);
       }
       context.clearRect(0, 0, this.width, this.height);
@@ -203,12 +240,45 @@
       gradient.addColorStop(1, "#ddb27a");
       const pulse = reducedQuery.matches ? 1 : .92 + .08 * Math.sin((now / period) * Math.PI * 2);
       context.strokeStyle = gradient;
-      context.globalAlpha = .06 * this.current.opacity;
+      context.globalAlpha = .06 * this.current.opacity * waveStrength;
       context.lineWidth = 6;
       context.stroke(path);
-      context.globalAlpha = .9 * pulse * this.current.opacity;
+      context.globalAlpha = .9 * pulse * this.current.opacity * waveStrength;
       context.lineWidth = 1.25;
       context.stroke(path);
+
+      if (this.dockProgress > .001) {
+        const straightPath = new Path2D();
+        straightPath.moveTo(0, mid);
+        straightPath.lineTo(this.width, mid);
+        context.strokeStyle = "#343444";
+        context.globalAlpha = .9 * this.dockProgress;
+        context.lineWidth = 1;
+        context.stroke(straightPath);
+
+        const segment = this.width * .16;
+        const phase = reducedQuery.matches ? .5 : (now % 5200) / 5200;
+        const center = -segment + (this.width + segment * 2) * phase;
+        const start = Math.max(0, center - segment);
+        const end = Math.min(this.width, center + segment);
+        if (end > start) {
+          const colorWave = context.createLinearGradient(center - segment, 0, center + segment, 0);
+          colorWave.addColorStop(0, "rgba(228, 153, 139, 0)");
+          colorWave.addColorStop(.35, "#e4998b");
+          colorWave.addColorStop(.65, "#ddb27a");
+          colorWave.addColorStop(1, "rgba(221, 178, 122, 0)");
+          const colorPath = new Path2D();
+          colorPath.moveTo(start, mid);
+          colorPath.lineTo(end, mid);
+          context.strokeStyle = colorWave;
+          context.globalAlpha = .08 * this.dockProgress;
+          context.lineWidth = 6;
+          context.stroke(colorPath);
+          context.globalAlpha = .95 * this.dockProgress;
+          context.lineWidth = 1.6;
+          context.stroke(colorPath);
+        }
+      }
       context.globalAlpha = 1;
     }
   }

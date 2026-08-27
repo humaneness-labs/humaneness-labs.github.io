@@ -213,9 +213,11 @@ h1 em, h2 em, .pull-line, .platform-line em, .direction-lines em { font-style: i
   left: 0;
   height: 140px;
   border-block: 1px solid transparent;
-  transform: translateY(-50%);
+  transform: translate3d(0, var(--dock-shift, 0), 0) translateY(-50%);
   pointer-events: none;
 }
+
+.living-line--fixed.is-docked { z-index: 3; }
 
 .line-caption {
   position: absolute;

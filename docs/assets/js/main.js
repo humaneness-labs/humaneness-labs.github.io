@@ -84,4 +84,16 @@
     soulObserver.observe(soul);
   }
 
+  const contact = document.querySelector("#contact");
+  if (contact && fixedLine) {
+    let docked = false;
+    const contactObserver = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (entry.intersectionRatio >= .35) docked = true;
+      else if (entry.intersectionRatio <= .15 && entry.boundingClientRect.top > 0) docked = false;
+      fixedLine.setDocked(docked);
+    }, { threshold: [.15, .35] });
+    contactObserver.observe(contact);
+  }
+
 }());
