@@ -208,16 +208,20 @@ h1 em, h2 em, .pull-line, .platform-line em, .direction-lines em { font-style: i
 .living-line { display: block; width: 100%; }
 .living-line--fixed {
   position: fixed;
-  z-index: 0;
+  z-index: 2;
   top: calc(50% + clamp(4.75rem, 10vw, 9.5rem));
   left: 0;
   height: 140px;
   border-block: 1px solid transparent;
   transform: translate3d(0, var(--dock-shift, 0), 0) translateY(-50%);
+  mix-blend-mode: difference;
   pointer-events: none;
 }
 
-.living-line--fixed.is-docked { z-index: 3; }
+.living-line--fixed.is-docked {
+  z-index: 3;
+  mix-blend-mode: normal;
+}
 
 .line-caption {
   position: absolute;

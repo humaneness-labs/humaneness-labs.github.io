@@ -155,7 +155,7 @@
         this.target.period = 6000;
       } else if (this.fixed && !this.soul) {
         const progress = Math.min(1, scrollY / (innerHeight * 1.2));
-        this.target.opacity = 1 - progress * .75;
+        this.target.opacity = 1 - progress * .65;
         this.target.amplitude = this.baseAmplitude * (1 - progress * .5);
         this.target.period = this.options.breathPeriod;
       }
