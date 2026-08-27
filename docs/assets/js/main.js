@@ -45,21 +45,6 @@
   });
   requestAnimationFrame(() => document.querySelectorAll(".hero-word").forEach((word) => word.classList.add("is-in")));
 
-  document.querySelectorAll([
-    ".site-header a > span:not(.brand-mark)",
-    ".site-header__contact",
-    "main h1 span",
-    "main h1 em",
-    "main h2",
-    "main h2 em",
-    "main p",
-    "main p em",
-    "main .capability span",
-    "main a",
-    "main button",
-    ".site-footer p"
-  ].join(",")).forEach((item) => item.classList.add("line-color-text"));
-
   const revealItems = document.querySelectorAll("[data-reveal]");
   if (reduced || !("IntersectionObserver" in window)) {
     revealItems.forEach((item) => item.classList.add("is-in"));
@@ -90,6 +75,41 @@
     link.href = "mailto:" + address;
     link.textContent = address;
   });
+
+  function prepareLineColorText() {
+    const targets = [];
+    const roots = document.querySelectorAll(".site-header, main, .site-footer");
+    roots.forEach((contentRoot) => {
+      const walker = document.createTreeWalker(contentRoot, NodeFilter.SHOW_TEXT, {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent || !node.textContent.trim()) return NodeFilter.FILTER_REJECT;
+          if (parent.closest("script, style, canvas, .brand-mark")) return NodeFilter.FILTER_REJECT;
+          return NodeFilter.FILTER_ACCEPT;
+        }
+      });
+      const nodes = [];
+      while (walker.nextNode()) nodes.push(walker.currentNode);
+      nodes.forEach((node) => {
+        const fragment = document.createDocumentFragment();
+        node.textContent.split(/(\s+)/).forEach((part) => {
+          if (!part || /^\s+$/.test(part)) {
+            fragment.appendChild(document.createTextNode(part));
+            return;
+          }
+          const word = document.createElement("span");
+          word.className = "line-color-word";
+          word.textContent = part;
+          targets.push(word);
+          fragment.appendChild(word);
+        });
+        node.replaceWith(fragment);
+      });
+    });
+    return targets;
+  }
+
+  if (fixedLine) fixedLine.setTextTargets(prepareLineColorText());
 
   const soul = document.querySelector("#soul");
   if (soul && fixedLine) {

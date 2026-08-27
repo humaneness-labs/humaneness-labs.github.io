@@ -21,6 +21,19 @@
     return 1 - Math.pow(1 - Math.max(0, Math.min(1, value)), 3);
   }
 
+  function clamp(value, min, max) {
+    return Math.max(min, Math.min(max, value));
+  }
+
+  function parseColor(value) {
+    const channels = value.match(/[\d.]+/g);
+    return channels ? channels.slice(0, 3).map(Number) : [234, 230, 223];
+  }
+
+  function mixColor(from, to, amount) {
+    return "rgb(" + from.map((channel, index) => Math.round(channel + (to[index] - channel) * amount)).join(" ") + ")";
+  }
+
   function loop(now) {
     const delta = Math.min(34, now - (last || now));
     last = now;
@@ -61,6 +74,7 @@
       this.dockShift = 0;
       this.lastPageY = scrollY;
       this.scrollVelocity = 0;
+      this.textMetrics = [];
       this.hesitationStart = 0;
       this.nextHesitation = performance.now() + randomBetween(6000, 14000);
       this.distractionStart = 0;
@@ -78,7 +92,6 @@
       }, { rootMargin: "20%" });
       this.observer.observe(canvas);
       instances.push(this);
-      if (this.fixed) document.documentElement.classList.add("has-living-line-color");
       this.resize();
       if (reducedQuery.matches) this.render(1200, 0);
       else start();
@@ -99,7 +112,31 @@
       this.canvas.height = Math.max(1, Math.round(this.height * this.dpr));
       this.context.setTransform(this.dpr, 0, 0, this.dpr, 0, 0);
       this.positionDock();
+      this.measureTextTargets();
       this.render(performance.now(), 0);
+    }
+
+    setTextTargets(targets) {
+      this.textMetrics = Array.from(targets).map((element) => ({
+        element,
+        base: parseColor(getComputedStyle(element).color),
+        center: 0,
+        active: false
+      }));
+      this.measureTextTargets();
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => this.measureTextTargets());
+      }
+      setTimeout(() => this.measureTextTargets(), 1400);
+      start();
+    }
+
+    measureTextTargets() {
+      if (!this.textMetrics.length) return;
+      this.textMetrics.forEach((metric) => {
+        const rect = metric.element.getBoundingClientRect();
+        metric.center = rect.top + scrollY + rect.height / 2;
+      });
     }
 
     setMood(name) {
@@ -186,13 +223,37 @@
       const lineRect = this.canvas.getBoundingClientRect();
       const lineY = lineRect.top + lineRect.height / 2;
       const strength = Math.max(0, 1 - this.dockProgress);
-      const style = document.documentElement.style;
-      style.setProperty("--line-color-y", lineY.toFixed(2) + "px");
-      style.setProperty("--line-color-above", above.toFixed(2) + "px");
-      style.setProperty("--line-color-below", below.toFixed(2) + "px");
-      style.setProperty("--line-color-soft", (34 * strength).toFixed(1) + "%");
-      style.setProperty("--line-color-mid", (86 * strength).toFixed(1) + "%");
-      style.setProperty("--line-color-strong", (94 * strength).toFixed(1) + "%");
+      this.colorTextTargets(lineY, above + 46, below + 46, strength);
+    }
+
+    colorTextTargets(lineY, above, below, strength) {
+      const rose = [255, 111, 145];
+      const amber = [255, 193, 92];
+      const blue = [145, 168, 255];
+      this.textMetrics.forEach((metric) => {
+        const distance = metric.center - scrollY - lineY;
+        const reach = distance < 0 ? above : below;
+        const proximity = clamp(1 - Math.abs(distance) / reach, 0, 1);
+        const amount = strength * Math.pow(proximity, .72) * .96;
+        if (amount < .012) {
+          if (metric.active) {
+            metric.element.style.removeProperty("color");
+            metric.active = false;
+          }
+          return;
+        }
+
+        let accent;
+        if (distance < -8) {
+          accent = blue.map((channel, index) => channel + (rose[index] - channel) * clamp(1 - Math.abs(distance + 8) / above, 0, 1));
+        } else if (distance <= 4) {
+          accent = rose.map((channel, index) => channel + (amber[index] - channel) * ((distance + 8) / 12));
+        } else {
+          accent = amber.map((channel, index) => channel + (blue[index] - channel) * clamp((distance - 4) / below, 0, 1));
+        }
+        metric.element.style.color = mixColor(metric.base, accent, amount);
+        metric.active = true;
+      });
     }
 
     hesitation(now) {
