@@ -84,12 +84,4 @@
     soulObserver.observe(soul);
   }
 
-  const hero = document.querySelector("#hero");
-  const header = document.querySelector(".site-header");
-  if (hero && header) {
-    const headerObserver = new IntersectionObserver((entries) => {
-      header.classList.toggle("is-scrolled", !entries[0].isIntersecting);
-    }, { rootMargin: "-12% 0px 0px" });
-    headerObserver.observe(hero);
-  }
 }());

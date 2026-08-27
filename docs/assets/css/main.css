@@ -102,7 +102,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stream-blue); o
 .shell { padding-inline: clamp(1.35rem, 5vw, 5rem); }
 
 .site-header {
-  position: fixed;
+  position: absolute;
   z-index: 10;
   inset: 0 0 auto;
   display: flex;
@@ -111,18 +111,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stream-blue); o
   gap: 2rem;
   padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1.35rem, 5vw, 5rem);
 }
-
-.site-header::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: 0;
-  background: linear-gradient(to bottom, rgb(16 16 24 / .92), rgb(16 16 24 / 0));
-  opacity: 0;
-  transition: opacity 500ms var(--ease-out);
-}
-
-.site-header.is-scrolled::before { opacity: 1; }
 
 .wordmark {
   font-weight: 500;
