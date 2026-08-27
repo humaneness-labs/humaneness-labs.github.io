@@ -47,6 +47,9 @@
   --breath-rose: #e4998b;
   --breath-amber: #ddb27a;
   --stream-blue: #7c8cbd;
+  --line-glow-rose: #ff6f91;
+  --line-glow-amber: #ffc15c;
+  --line-glow-blue: #91a8ff;
   --display: "Newsreader", Iowan Old Style, Baskerville, serif;
   --body: "Schibsted Grotesk", "Avenir Next", Avenir, Helvetica, Arial, sans-serif;
   --mono: "Spline Sans Mono", "SFMono-Regular", Consolas, monospace;
@@ -62,6 +65,12 @@
   --ease-breath: cubic-bezier(.37, 0, .63, 1);
   --ease-out: cubic-bezier(.16, 1, .3, 1);
   --dur-reveal: 900ms;
+  --line-color-y: 50vh;
+  --line-color-above: 24px;
+  --line-color-below: 24px;
+  --line-color-soft: 0%;
+  --line-color-mid: 0%;
+  --line-color-strong: 0%;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -221,6 +230,29 @@ h1 em, h2 em, .pull-line, .platform-line em, .direction-lines em { font-style: i
 .living-line--fixed.is-docked {
   z-index: 3;
   mix-blend-mode: normal;
+}
+
+/* The living line leaves color in the glyphs it passes. The gradient is
+   anchored to the viewport, while JS stretches its trailing edge with speed. */
+.has-living-line-color .line-color-text {
+  background-image: linear-gradient(
+    to bottom,
+    currentColor 0,
+    currentColor calc(var(--line-color-y) - var(--line-color-above) - 46px),
+    color-mix(in srgb, currentColor calc(100% - var(--line-color-soft)), var(--line-glow-blue) var(--line-color-soft)) calc(var(--line-color-y) - var(--line-color-above)),
+    color-mix(in srgb, currentColor calc(100% - var(--line-color-mid)), var(--line-glow-rose) var(--line-color-mid)) calc(var(--line-color-y) - 8px),
+    color-mix(in srgb, currentColor calc(100% - var(--line-color-strong)), var(--line-glow-amber) var(--line-color-strong)) calc(var(--line-color-y) + 4px),
+    color-mix(in srgb, currentColor calc(100% - var(--line-color-soft)), var(--line-glow-blue) var(--line-color-soft)) calc(var(--line-color-y) + var(--line-color-below)),
+    currentColor calc(var(--line-color-y) + var(--line-color-below) + 46px),
+    currentColor 100%
+  );
+  background-position: 0 0;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .line-caption {

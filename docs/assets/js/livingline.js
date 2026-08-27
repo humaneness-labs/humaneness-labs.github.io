@@ -59,6 +59,8 @@
       this.dockTarget = 0;
       this.dockProgress = 0;
       this.dockShift = 0;
+      this.lastPageY = scrollY;
+      this.scrollVelocity = 0;
       this.hesitationStart = 0;
       this.nextHesitation = performance.now() + randomBetween(6000, 14000);
       this.distractionStart = 0;
@@ -76,6 +78,7 @@
       }, { rootMargin: "20%" });
       this.observer.observe(canvas);
       instances.push(this);
+      if (this.fixed) document.documentElement.classList.add("has-living-line-color");
       this.resize();
       if (reducedQuery.matches) this.render(1200, 0);
       else start();
@@ -163,7 +166,33 @@
       Object.keys(this.current).forEach((key) => {
         this.current[key] += (this.target[key] - this.current[key]) * lerp;
       });
+      if (this.fixed) this.updateTextColor(delta);
       this.render(now, delta);
+    }
+
+    updateTextColor(delta) {
+      const pageY = scrollY;
+      const instantVelocity = delta > 0 ? (pageY - this.lastPageY) / delta : 0;
+      this.lastPageY = pageY;
+      const accelerating = Math.abs(instantVelocity) > Math.abs(this.scrollVelocity);
+      const velocityLerp = 1 - Math.pow(accelerating ? .82 : .9945, Math.max(1, delta));
+      this.scrollVelocity += (instantVelocity - this.scrollVelocity) * velocityLerp;
+
+      const speed = Math.min(4.2, Math.abs(this.scrollVelocity));
+      const trail = Math.min(154, speed * 37);
+      const leadingEdge = Math.min(18, speed * 4);
+      const above = 24 + (this.scrollVelocity > 0 ? trail : leadingEdge);
+      const below = 24 + (this.scrollVelocity < 0 ? trail : leadingEdge);
+      const lineRect = this.canvas.getBoundingClientRect();
+      const lineY = lineRect.top + lineRect.height / 2;
+      const strength = Math.max(0, 1 - this.dockProgress);
+      const style = document.documentElement.style;
+      style.setProperty("--line-color-y", lineY.toFixed(2) + "px");
+      style.setProperty("--line-color-above", above.toFixed(2) + "px");
+      style.setProperty("--line-color-below", below.toFixed(2) + "px");
+      style.setProperty("--line-color-soft", (34 * strength).toFixed(1) + "%");
+      style.setProperty("--line-color-mid", (86 * strength).toFixed(1) + "%");
+      style.setProperty("--line-color-strong", (94 * strength).toFixed(1) + "%");
     }
 
     hesitation(now) {

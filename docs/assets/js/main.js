@@ -45,6 +45,21 @@
   });
   requestAnimationFrame(() => document.querySelectorAll(".hero-word").forEach((word) => word.classList.add("is-in")));
 
+  document.querySelectorAll([
+    ".site-header a > span:not(.brand-mark)",
+    ".site-header__contact",
+    "main h1 span",
+    "main h1 em",
+    "main h2",
+    "main h2 em",
+    "main p",
+    "main p em",
+    "main .capability span",
+    "main a",
+    "main button",
+    ".site-footer p"
+  ].join(",")).forEach((item) => item.classList.add("line-color-text"));
+
   const revealItems = document.querySelectorAll("[data-reveal]");
   if (reduced || !("IntersectionObserver" in window)) {
     revealItems.forEach((item) => item.classList.add("is-in"));
