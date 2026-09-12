@@ -28,12 +28,15 @@
         <span class="brand-mark" aria-hidden="true"></span>
         <span>Humaneness Labs</span>
       </a>
-      <a class="text-link site-header__contact" href="#contact">Research partnerships</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="text-link" href="about.html">About us</a>
+        <a class="text-link site-header__contact" href="#contact">Research partnerships</a>
+      </nav>
     </header>
 
     <canvas class="living-line living-line--fixed" id="living-line" role="img" aria-label="A thin line moving like a breathing voice"></canvas>
 
-    <main id="main">
+    <main id="main" tabindex="-1">
       <section class="hero shell" id="hero" aria-labelledby="hero-title">
         <div class="hero__content">
           <p class="eyebrow">A research lab · Europe</p>
@@ -42,15 +45,15 @@
             <em data-hero-line data-pause>AI needs a way of being.</em>
           </h1>
           <p class="hero__lede">Humaneness Labs is building the behavior layer for AI — models of attention, emotion, perception, and social context that make interaction feel present.</p>
+          <p class="line-caption">it breathes. move your cursor closer.</p>
         </div>
-        <p class="line-caption">it breathes. move your cursor closer.</p>
         <span class="scroll-cue" aria-hidden="true"></span>
       </section>
 
       <section class="section section--gap shell" id="gap" aria-labelledby="gap-title">
         <div class="section__inner">
           <p class="eyebrow" data-reveal>01 · The missing layer</p>
-          <h2 id="gap-title" data-reveal>Capable, expressive —<br><em>and still not quite there.</em></h2>
+          <h2 id="gap-title" data-reveal>Capable, expressive,<br><em>and still not quite there.</em></h2>
           <p data-reveal>AI can speak fluently, read a room, generate a face, and move through the physical world. Yet even the strongest systems often feel subtly performed: the voice that is too polished, the pause that arrives on cue, the expression without a thought behind it.</p>
           <p class="pull-line" data-reveal>The gap is not more expression. It is behavior with something beneath it.</p>
         </div>
@@ -117,9 +120,9 @@
           <h2 id="presence-title" data-reveal>From simulation<br><em>to presence.</em></h2>
           <p class="presence-copy" data-reveal>Our goal is not to make machines better at pretending to be human. It is to understand the computational principles that make interaction feel authentic — and build systems that can use them in context.</p>
           <div class="direction-lines" aria-label="Our direction">
-            <p data-reveal style="--i: 0">From imitation <em>toward understanding.</em></p>
-            <p data-reveal style="--i: 1">From performance <em>toward presence.</em></p>
-            <p data-reveal style="--i: 2">From realism <em>toward genuine interaction.</em></p>
+            <p data-reveal style="--i: 0"><span>From imitation</span><em>toward understanding.</em></p>
+            <p data-reveal style="--i: 1"><span>From performance</span><em>toward presence.</em></p>
+            <p data-reveal style="--i: 2"><span>From realism</span><em>toward genuine interaction.</em></p>
           </div>
         </div>
       </section>
@@ -133,12 +136,16 @@
           <p class="eyebrow" data-reveal>Research partnerships</p>
           <h2 id="contact-title" data-reveal>If you are working on the future of voice or embodied intelligence, <em>we should talk.</em></h2>
         </div>
-        <a class="email-link" data-email data-user="hello" data-domain="humanenesslabs.com" href="#" data-reveal>hello [at] humanenesslabs.com</a>
+        <a class="email-link" href="mailto:contact@humaneness.ai" data-reveal>contact@humaneness.ai</a>
       </section>
     </main>
 
     <footer class="site-footer shell">
       <p>Humaneness Labs — building quietly.</p>
+      <nav class="footer-nav" aria-label="Footer navigation">
+        <a href="about.html">About us</a>
+        <a href="impressum.html">Legal notice</a>
+      </nav>
       <p class="site-footer__meta">© 2026 · Made in Europe</p>
     </footer>
 
