@@ -125,10 +125,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stream-blue); o
 }
 
 .brand-mark {
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.55rem;
+  height: 1.55rem;
   flex: 0 0 auto;
-  background: currentColor;
+  background: var(--bone);
+  background: linear-gradient(145deg, var(--breath-rose), var(--breath-amber) 55%, var(--stream-blue));
   -webkit-mask: url("../../logo.svg") center / contain no-repeat;
   mask: url("../../logo.svg") center / contain no-repeat;
 }

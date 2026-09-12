@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <title>Humaneness Labs</title>
+  <path d="M14 12V52M50 12V52" stroke="#000" stroke-width="4.25" stroke-linecap="round"/>
+  <path d="M14 32C20 32 20 23 26 23S32 41 38 41 44 32 50 32" stroke="#000" stroke-width="4.25" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
