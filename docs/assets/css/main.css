@@ -1,32 +1,16 @@
 @font-face {
-  font-family: "Newsreader";
-  src: url("../fonts/newsreader-400.woff2") format("woff2");
+  font-family: "Bricolage Grotesque";
+  src: url("../fonts/bricolage-grotesque-latin-variable.woff2") format("woff2");
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400 600;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Newsreader";
-  src: url("../fonts/newsreader-400-italic.woff2") format("woff2");
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Schibsted Grotesk";
-  src: url("../fonts/schibsted-grotesk-400.woff2") format("woff2");
+  font-family: "Instrument Sans";
+  src: url("../fonts/instrument-sans-latin-variable.woff2") format("woff2");
   font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Schibsted Grotesk";
-  src: url("../fonts/schibsted-grotesk-500.woff2") format("woff2");
-  font-style: normal;
-  font-weight: 500;
+  font-weight: 400 600;
   font-display: swap;
 }
 
@@ -50,8 +34,8 @@
   --line-glow-rose: #ff6f91;
   --line-glow-amber: #ffc15c;
   --line-glow-blue: #91a8ff;
-  --display: "Newsreader", Iowan Old Style, Baskerville, serif;
-  --body: "Schibsted Grotesk", "Avenir Next", Avenir, Helvetica, Arial, sans-serif;
+  --display: "Bricolage Grotesque", "Avenir Next", Avenir, sans-serif;
+  --body: "Instrument Sans", "Avenir Next", Avenir, Helvetica, Arial, sans-serif;
   --mono: "Spline Sans Mono", "SFMono-Regular", Consolas, monospace;
   --step--1: clamp(.69rem, .66rem + .14vw, .78rem);
   --step-0: clamp(1rem, .96rem + .2vw, 1.12rem);
@@ -131,8 +115,9 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stream-blue); o
   display: inline-flex;
   align-items: center;
   gap: .62rem;
+  font-family: var(--display);
   font-weight: 500;
-  letter-spacing: -.025em;
+  letter-spacing: -.035em;
   text-decoration: none;
 }
 
@@ -188,14 +173,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stream-blue); o
 h1, h2 {
   margin: 0;
   font-family: var(--display);
-  font-weight: 400;
-  letter-spacing: -.032em;
-  line-height: 1.02;
+  font-weight: 500;
+  font-optical-sizing: auto;
+  letter-spacing: -.025em;
+  line-height: 1.08;
 }
 
-h1 { max-width: 11ch; font-size: clamp(3.1rem, min(7.6vw, 12svh), 7.75rem); }
+h1 { max-width: 16ch; font-size: clamp(2.75rem, min(7vw, 10.7svh), 7rem); }
 h1 > span, h1 > em { display: block; }
-h1 em, h2 em, .pull-line, .platform-line em, .direction-lines em { font-style: italic; font-weight: 400; }
+h1 em, h2 em, .pull-line, .platform-line em, .direction-lines em { font-style: normal; font-weight: 400; }
 
 .hero {
   position: relative;
@@ -271,7 +257,7 @@ h1 em, h2 em, .pull-line, .platform-line em, .direction-lines em { font-style: i
 }
 
 .section__inner { width: min(100%, 72rem); margin-inline: auto; }
-.section h2, .contact h2 { max-width: 15ch; font-size: var(--step-2); }
+.section h2, .contact h2 { max-width: 18ch; font-size: var(--step-2); }
 .section__body { max-width: var(--measure); margin: var(--space-m) 0 0 auto; }
 .section__body p { margin: 0; }
 .section__body p + p { margin-top: 1.35rem; }
@@ -510,7 +496,7 @@ h1 em, h2 em, .pull-line, .platform-line em, .direction-lines em { font-style: i
 }
 
 @media (max-width: 430px) {
-  h1 { font-size: clamp(2.9rem, 14.4vw, 4rem); }
+  h1 { font-size: clamp(2.4rem, 11.8vw, 3.2rem); }
   .hero__lede { font-size: 1rem; }
   .mood { font-size: .62rem; }
 }
