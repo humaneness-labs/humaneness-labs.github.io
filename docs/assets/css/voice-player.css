@@ -114,7 +114,8 @@
 
 /* Homepage release card */
 .vplayer--feature { gap: .75rem; margin-top: 1.4rem; }
-.vplayer--feature .vplayer__variant { min-height: 36px; padding: .35rem .75rem; font-size: .74rem; }
+.vplayer--feature .vplayer__variants { gap: .3rem; }
+.vplayer--feature .vplayer__variant { min-height: 36px; padding: .35rem .55rem; font-size: .7rem; }
 .vplayer--feature .vplayer__wave { height: 50px; }
 .vplayer--feature .vplayer__caption { min-height: 4.35em; margin: 0; font-size: 1rem; }
 .release-feature { transition: border-color 600ms ease, box-shadow 900ms ease; }

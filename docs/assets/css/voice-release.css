@@ -162,9 +162,9 @@
 .vr-europe { position: relative; border-top: 1px solid var(--hairline); background: radial-gradient(60% 50% at 15% 10%, rgb(221 178 122 / .07), transparent 72%); }
 .vr-europe__intro { padding-block: clamp(5rem, 10vw, 8rem) 1.5rem; }
 .vr-europe__inner { display: grid; gap: clamp(1.4rem, 4svh, 2.6rem); padding-block: 2rem; }
-.js .vr-europe__track { height: 400svh; }
+.js .vr-europe__track { height: 500svh; }
 .js .vr-europe__sticky { position: sticky; top: 0; display: grid; min-height: 100svh; align-items: center; }
-.vr-langs { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
+.vr-langs { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 0; padding: 0; list-style: none; }
 .vr-langs [data-lang-stop] { position: relative; padding-top: 1.35rem; color: var(--mute); font: 500 clamp(.95rem, .78rem + .7vw, 1.4rem)/1.2 var(--display); letter-spacing: -.01em; transition: color 400ms; }
 .vr-langs [data-lang-stop] span { display: block; margin-bottom: .35rem; color: #5d5d72; font: .62rem/1 var(--mono); letter-spacing: .14em; transition: color 400ms; }
 .vr-langs [data-lang-stop]::before { content: ""; position: absolute; z-index: 1; top: -4px; left: 0; width: 9px; height: 9px; border: 1px solid #4b4b5e; border-radius: 50%; background: var(--ink-deep); transition: background 400ms, border-color 400ms, box-shadow 400ms; }
@@ -315,7 +315,7 @@
   .vr-hero__actions { gap: .85rem; }
   .vr-facts { grid-template-columns: minmax(0, 1fr); }
   .vr-next { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
-  .vr-langs [data-lang-stop] { font-size: .8rem; }
+  .vr-langs [data-lang-stop] { font-size: .72rem; }
   .vr-europe__meta { font-size: .58rem; }
   .vr-scene__links { flex-direction: column; }
 }

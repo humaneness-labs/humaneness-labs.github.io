@@ -1,7 +1,9 @@
 <!doctype html>
-<html lang="en"><head>
+<html lang="en" class="no-js">
+<head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#101018"><meta name="description" content="A research framework for script analysis, performance annotation, and a shared vocabulary for expressive behavior.">
+<meta name="theme-color" content="#101018">
+<meta name="description" content="A research framework for script analysis, performance annotation, and a shared vocabulary for expressive behavior.">
 <title>Introducing Humaneness PerformanceNet — Humaneness Labs</title>
 <link rel="canonical" href="https://humaneness.ai/blog/humaneness-performancenet/">
 <meta property="og:type" content="article"><meta property="og:title" content="Introducing Humaneness PerformanceNet">
@@ -9,183 +11,266 @@
 <meta property="og:image" content="https://humaneness.ai/assets/og/og-image.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="../../logo.svg" type="image/svg+xml">
 <link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/instrument-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/main.css?v=dd984d7c3e91">
 <link rel="stylesheet" href="../../assets/css/blog.css?v=650c3ab3480d">
-</head><body>
+<link rel="stylesheet" href="../../assets/css/performancenet.css?v=c37fa1c0ffd6">
+</head>
+<body class="pn-page">
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header" aria-label="Primary"><a class="wordmark" href="../../" aria-label="Humaneness Labs, home"><span class="brand-mark" aria-hidden="true"></span><span>Humaneness Labs</span></a>
-<nav class="site-nav" aria-label="Main navigation"><a class="text-link" href="../../blog/" >Blog</a><a class="text-link" href="../../about.html">About us</a><a class="text-link site-header__contact" href="../../#contact">Research partnerships</a>
+<nav class="site-nav" aria-label="Main navigation"><a class="text-link" href="../../blog/">Blog</a><a class="text-link" href="../../about.html">About us</a><a class="text-link site-header__contact" href="../../#contact">Research partnerships</a>
 </nav>
 </header>
-<main id="main" class="journal blog-shell" tabindex="-1">
-<article>
-<header>
-<p class="eyebrow">Release 01 · Research tools · <time datetime="2026-10-23">23 October 2026</time>
-</p>
-<h1>A shared language for performance.</h1>
-<p class="intro">Introducing <strong>Humaneness PerformanceNet</strong>: an open research library connecting authored intention with the careful description of what we see and hear.</p>
-<div class="actions"><a class="button button--primary" href="#walkthrough">Explore the walkthrough ↓</a><a class="button" href="https://huggingface.co/spaces/laion/Humaneness-PerformanceNet">Open the research library ↗</a>
-</div>
-</header>
-<section class="article-section article-columns article-rule">
-<div>
-<p class="eyebrow">Why we built it</p>
-<h2>“Say it warmly” leaves a lot unsaid.</h2>
-</div>
-<div>
-<p>A scene has circumstances. A character has a history. An utterance has beats, pauses, physical effort, and a changing relationship to the listener. Describing a performance requires a vocabulary for more than an emotion label.</p>
-<p>Humaneness PerformanceNet brings together script analysis, performance annotation, and complementary reference systems. It is a framework and research library for structuring that work, with browser-based reference materials and prompt-drafting tools.</p>
-<p>It can support the design of synthetic performances, the organization of datasets, and task-specific supervision. It does not itself generate speech or provide a trained reward model.</p>
-</div>
+
+<main id="main" class="pn" tabindex="-1">
+
+<section class="pn-hero" aria-labelledby="pn-title">
+  <svg class="pn-hero__waves" viewBox="0 0 800 800" aria-hidden="true">
+    <circle cx="400" cy="400" r="90"/><circle cx="400" cy="400" r="170"/><circle cx="400" cy="400" r="250"/><circle cx="400" cy="400" r="330"/><circle cx="400" cy="400" r="395"/>
+  </svg>
+  <div class="pn-shell pn-hero__grid">
+    <div class="pn-hero__text">
+      <p class="eyebrow pn-rise">Release 01 · Research tools · <time datetime="2026-10-23">23 October 2026</time></p>
+      <h1 id="pn-title" class="pn-hero__title"><span class="pn-rise">A shared language</span> <em class="pn-rise">for performance.</em></h1>
+      <p class="pn-hero__intro pn-rise">Introducing <strong>Humaneness PerformanceNet</strong>: an open research library connecting authored intention with the careful description of what we see and hear.</p>
+      <div class="actions pn-rise"><a class="button button--primary" href="#study">Follow the scene study ↓</a><a class="button" href="https://huggingface.co/spaces/laion/Humaneness-PerformanceNet">Open the research library ↗</a></div>
+    </div>
+    <figure class="pn-slate pn-rise" aria-label="Illustrative scene: a tired radio operator says, Keep the channel open. I’m still here.">
+      <figcaption class="pn-slate__head"><span>Scene study</span><span>Rescue radio · fictional</span></figcaption>
+      <blockquote class="pn-slate__line"><span class="pn-mark pn-mark--a">“Keep the channel open.</span> <span class="pn-mark pn-mark--b">I’m still here.”</span></blockquote>
+      <div class="pn-slate__notes" aria-hidden="true">
+        <span class="pn-note pn-note--a">Beat 1 · Don’t let the connection go.</span>
+        <span class="pn-note pn-note--b">Beat 2 · Give them a reason to stay.</span>
+      </div>
+      <div class="pn-slate__foot" aria-hidden="true"><span>Intention</span><i></i><span>Evidence</span></div>
+    </figure>
+  </div>
 </section>
-<section class="article-section" id="walkthrough">
-<p class="eyebrow">An interactive scene study</p>
-<h2>From intention to evidence.</h2>
-<p class="article-lede">Follow a fictional radio operator through five steps. This is an illustration of the workflow: the directions are authored examples, not measured model predictions.</p>
-<div class="walkthrough" data-walkthrough>
-<div class="walkthrough__steps" aria-label="Walkthrough steps" data-enhanced hidden>
-<button type="button" class="step-button" data-step="0" data-label="Character" aria-pressed="true" aria-controls="performance-step-1"><span>01</span>Character</button>
-<button type="button" class="step-button" data-step="1" data-label="Intention" aria-pressed="false" aria-controls="performance-step-2"><span>02</span>Intention</button>
-<button type="button" class="step-button" data-step="2" data-label="Beats" aria-pressed="false" aria-controls="performance-step-3"><span>03</span>Beats</button>
-<button type="button" class="step-button" data-step="3" data-label="Vocabulary" aria-pressed="false" aria-controls="performance-step-4"><span>04</span>Vocabulary</button>
-<button type="button" class="step-button" data-step="4" data-label="Evidence" aria-pressed="false" aria-controls="performance-step-5"><span>05</span>Evidence</button>
-</div>
-<section class="walk-panel" id="performance-step-1" aria-labelledby="performance-title-1">
-<div>
-<p class="eyebrow">01 · Character</p>
-<h3 id="performance-title-1">Begin with a person in a situation.</h3>
-<p>Script analysis starts with the scene and the character’s makeup: physical, emotional, intellectual, and psychological context. These are authored premises, not a diagnosis of a real speaker.</p>
-<p class="small-note">Our fictional example: a tired radio operator keeps a rescue channel open.</p>
-</div>
-<div class="stage-art"><span class="stage-label">Illustrative scene · authored context</span><blockquote>“Keep the channel open. I’m still here.”</blockquote>
-<div class="stage-tags"><span>Rescue radio</span><span>Fatigue</span><span>Someone is listening</span>
-</div>
-</div>
+
+<section class="pn-shell pn-stats" aria-label="The reference systems at a glance">
+  <dl>
+    <div data-reveal><dt>Complementary reference systems</dt><dd data-count="4">4</dd></div>
+    <div data-reveal style="--i:1"><dt>EmoNet emotion and state labels</dt><dd data-count="40">40</dd></div>
+    <div data-reveal style="--i:2"><dt>VoiceNet vocal fields</dt><dd data-count="57">57</dd></div>
+    <div data-reveal style="--i:3"><dt>PerformanceNet descriptive fields</dt><dd data-count="82">82</dd></div>
+  </dl>
 </section>
-<section class="walk-panel" id="performance-step-2" aria-labelledby="performance-title-2">
-<div>
-<p class="eyebrow">02 · Intention</p>
-<h3 id="performance-title-2">Make the dramatic intention explicit.</h3>
-<p>The script-analysis system uses seven Dramatic Obligations, interpreted through the character. Emotional Obligation is one part of that structure, connecting the scene’s demands to the performance.</p>
-<p class="small-note">For this example, the intended movement is from strain toward reassurance.</p>
-</div>
-<div class="stage-art"><span class="stage-label">Authored direction</span>
-<div class="stage-flow"><span>Situation: contact may be lost</span><span>Intention: keep the listener engaged</span><span>Emotional movement: strain → reassurance</span>
-</div>
-</div>
+
+<section class="pn-shell pn-why" aria-labelledby="why-title">
+  <p class="eyebrow" data-reveal>Why we built it</p>
+  <h2 id="why-title" data-reveal><span class="pn-strike">“Say it warmly”</span> leaves a lot unsaid.</h2>
+  <p class="pn-scrub" data-scrub>A scene has circumstances. A character has a history. An utterance has beats, pauses, physical effort, and a changing relationship to the listener. Describing a performance requires a vocabulary for more than an emotion label.</p>
+  <div class="pn-why__cols">
+    <p data-reveal>Humaneness PerformanceNet brings together script analysis, performance annotation, and complementary reference systems. It is a framework and research library for structuring that work, with browser-based reference materials and prompt-drafting tools.</p>
+    <p data-reveal style="--i:1">It can support the design of synthetic performances, the organization of datasets, and task-specific supervision. It does not itself generate speech or provide a trained reward model.</p>
+  </div>
 </section>
-<section class="walk-panel" id="performance-step-3" aria-labelledby="performance-title-3">
-<div>
-<p class="eyebrow">03 · Beats</p>
-<h3 id="performance-title-3">Let the line unfold in local beats.</h3>
-<p>Ordered Acting Beats carry words, actions, silence, and delivery. Each beat contains one nested Experience Chunk: the authored inner stream that gives the local action context.</p>
-<p class="small-note">The inner stream is a writing device. It is not evidence of a model’s or speaker’s private mental state.</p>
-</div>
-<div class="stage-art"><span class="stage-label">One inner stream per beat</span>
-<div class="stage-flow"><span>Beat 1 · “Keep the channel open.”</span><span>Inner stream · Don’t let the connection go.</span><span>Beat 2 · “I’m still here.”</span><span>Inner stream · Give them a reason to stay.</span>
-</div>
-</div>
+
+<section class="pn-study" id="study" aria-labelledby="study-title">
+  <header class="pn-shell pn-study__intro">
+    <p class="eyebrow" data-reveal>An interactive scene study</p>
+    <h2 id="study-title" data-reveal>From intention <em>to evidence.</em></h2>
+    <p class="pn-lede" data-reveal>Follow a fictional radio operator through five steps. This is an illustration of the workflow: the directions are authored examples, not measured model predictions.</p>
+  </header>
+  <div class="pn-study__track" data-study>
+    <div class="pn-study__stage">
+      <nav class="pn-rail" aria-label="Scene study steps">
+        <ol>
+          <li><a href="#study-1" data-rail><span>01</span>Character</a></li>
+          <li><a href="#study-2" data-rail><span>02</span>Intention</a></li>
+          <li><a href="#study-3" data-rail><span>03</span>Beats</a></li>
+          <li><a href="#study-4" data-rail><span>04</span>Vocabulary</a></li>
+          <li><a href="#study-5" data-rail><span>05</span>Evidence</a></li>
+        </ol>
+        <span class="pn-rail__progress" aria-hidden="true"><i data-study-fill></i></span>
+      </nav>
+      <div class="pn-board" data-board data-stage="0" aria-hidden="true">
+        <div class="pn-radio"><i></i><i></i><i></i></div>
+        <p class="pn-slug">Rescue radio · night · authored context</p>
+        <ul class="pn-tags"><li>Rescue radio</li><li>Fatigue</li><li>Someone is listening</li></ul>
+        <p class="pn-line">
+          <span class="pn-beat"><span class="pn-beat__label">Beat 1</span><span class="pn-beat__text">“Keep the channel open.</span><span class="pn-beat__stream">Don’t let the connection go.</span></span>
+          <span class="pn-beat"><span class="pn-beat__label">Beat 2</span><span class="pn-beat__text">I’m still here.”</span><span class="pn-beat__stream">Give them a reason to stay.</span></span>
+        </p>
+        <div class="pn-makeup">
+          <ol><li><span>01</span>Physical</li><li><span>02</span>Emotional</li><li><span>03</span>Intellectual</li><li><span>04</span>Psychological</li></ol>
+          <p>Character Makeup · authored premises, not a diagnosis</p>
+        </div>
+        <div class="pn-timeline">
+          <div class="pn-timeline__bar"><span class="pn-timeline__beat">Beat 1</span><span class="pn-timeline__gap">silence</span><span class="pn-timeline__beat pn-timeline__beat--b">Beat 2</span></div>
+          <p>Ordered Acting Beats · words, actions, silence, delivery</p>
+        </div>
+        <div class="pn-intent">
+          <svg class="pn-intent__arc" viewBox="0 0 400 70" preserveAspectRatio="none"><defs><linearGradient id="pn-arc" x1="0" x2="1"><stop offset="0" stop-color="#91a8ff"/><stop offset="1" stop-color="#e4998b"/></linearGradient></defs><path d="M6 62 C 130 4, 270 4, 394 62" pathLength="1"/></svg>
+          <span class="pn-intent__from">strain</span><span class="pn-intent__to">reassurance</span>
+          <p class="pn-intent__meta"><span>Situation · contact may be lost</span><span>Intention · keep the listener engaged</span></p>
+          <ol class="pn-obligations"><li></li><li></li><li></li><li class="is-key"></li><li></li><li></li><li></li></ol>
+          <p class="pn-obligations__label">Emotional Obligation · one of seven Dramatic Obligations</p>
+        </div>
+        <svg class="pn-wires" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M20 22 L34 31" pathLength="1"/><path d="M80 22 L66 31" pathLength="1"/><path d="M20 74 L34 60" pathLength="1"/><path d="M80 74 L66 60" pathLength="1"/></svg>
+        <div class="pn-lens-tags">
+          <span class="pn-lens-tag pn-lens-tag--situation">Situation taxonomy<small>conditions and constraints</small></span>
+          <span class="pn-lens-tag pn-lens-tag--emo">EmoNet<small>emotion and state</small></span>
+          <span class="pn-lens-tag pn-lens-tag--voice">VoiceNet<small>vocal description</small></span>
+          <span class="pn-lens-tag pn-lens-tag--perf">PerformanceNet<small>behavior and impressions</small></span>
+        </div>
+        <div class="pn-ledger">
+          <div class="is-filled"><span>Authored target</span><b>reassurance</b></div>
+          <div><span>Audible evidence</span><b>not yet annotated</b></div>
+          <div><span>Observer impression</span><b>not yet assessed</b></div>
+          <p class="pn-ledger__track"><span>No recording supplied</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="pn-study__steps">
+      <article class="pn-step" id="study-1" aria-labelledby="study-title-1">
+        <div class="pn-step__card">
+          <p class="eyebrow">01 · Character</p>
+          <h3 id="study-title-1">Begin with a person in a situation.</h3>
+          <p>Script analysis starts with the scene and the character’s makeup: physical, emotional, intellectual, and psychological context. These are authored premises, not a diagnosis of a real speaker.</p>
+          <p class="small-note">Our fictional example: a tired radio operator keeps a rescue channel open.</p>
+        </div>
+      </article>
+      <article class="pn-step" id="study-2" aria-labelledby="study-title-2">
+        <div class="pn-step__card">
+          <p class="eyebrow">02 · Intention</p>
+          <h3 id="study-title-2">Make the dramatic intention explicit.</h3>
+          <p>The script-analysis system uses seven Dramatic Obligations, interpreted through the character. Emotional Obligation is one part of that structure, connecting the scene’s demands to the performance.</p>
+          <p class="small-note">For this example, the intended movement is from strain toward reassurance.</p>
+        </div>
+      </article>
+      <article class="pn-step" id="study-3" aria-labelledby="study-title-3">
+        <div class="pn-step__card">
+          <p class="eyebrow">03 · Beats</p>
+          <h3 id="study-title-3">Let the line unfold in local beats.</h3>
+          <p>Ordered Acting Beats carry words, actions, silence, and delivery. Each beat contains one nested Experience Chunk: the authored inner stream that gives the local action context.</p>
+          <p class="small-note">The inner stream is a writing device. It is not evidence of a model’s or speaker’s private mental state.</p>
+        </div>
+      </article>
+      <article class="pn-step" id="study-4" aria-labelledby="study-title-4">
+        <div class="pn-step__card">
+          <p class="eyebrow">04 · Vocabulary</p>
+          <h3 id="study-title-4">Describe different aspects separately.</h3>
+          <p>Situation, emotion, voice, and visible or audible behavior each need their own vocabulary. The four references support structured prompts and annotations without collapsing everything into a single quality score.</p>
+          <p class="small-note">A requested performance and an observer’s interpretation belong in separate fields.</p>
+        </div>
+      </article>
+      <article class="pn-step" id="study-5" aria-labelledby="study-title-5">
+        <div class="pn-step__card">
+          <p class="eyebrow">05 · Evidence</p>
+          <h3 id="study-title-5">Return to what can actually be observed.</h3>
+          <p>The annotation system starts from recorded media and the modalities available. Time-linked observations stay distinct from qualified interpretations, observer impressions, and judgments about task fit.</p>
+          <p class="small-note">Without an actual recording, observable fields remain unfilled. A prompt is not proof of what the output did.</p>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
-<section class="walk-panel" id="performance-step-4" aria-labelledby="performance-title-4">
-<div>
-<p class="eyebrow">04 · Vocabulary</p>
-<h3 id="performance-title-4">Describe different aspects separately.</h3>
-<p>Situation, emotion, voice, and visible or audible behavior each need their own vocabulary. The four references support structured prompts and annotations without collapsing everything into a single quality score.</p>
-<p class="small-note">A requested performance and an observer’s interpretation belong in separate fields.</p>
-</div>
-<div class="stage-art"><span class="stage-label">Four complementary references</span>
-<div class="stage-flow"><span>Situation taxonomy · conditions and constraints</span><span>EmoNet · emotion and state</span><span>VoiceNet · vocal description</span><span>PerformanceNet · behavior and impressions</span>
-</div>
-</div>
+
+<section class="pn-shell pn-flows" aria-labelledby="flows-title">
+  <p class="eyebrow" data-reveal>Two connected workflows</p>
+  <h2 id="flows-title" data-reveal>Write the intention. <em>Annotate the performance.</em></h2>
+  <div class="pn-flows__grid">
+    <article class="pn-flow pn-flow--script" aria-labelledby="flow-script">
+      <h3 id="flow-script" data-reveal>Script analysis</h3>
+      <ol class="pn-flow__nodes" data-reveal>
+        <li style="--i:0"><span>01</span>A book, screenplay, stage scene, or radio script</li>
+        <li style="--i:1"><span>02</span>Character Makeup</li>
+        <li style="--i:2"><span>03</span>Seven Dramatic Obligations</li>
+        <li style="--i:3"><span>04</span>Ordered Acting Beats</li>
+        <li style="--i:4"><span>05</span>One Experience Chunk inside each beat</li>
+        <li style="--i:5"><span>06</span>Directions for an audio or audiovisual generator</li>
+      </ol>
+      <p data-reveal>Start from a book, screenplay, stage scene, radio script, or other source. Character Makeup and seven Dramatic Obligations provide context for ordered Acting Beats. One Experience Chunk inside each beat records its authored inner stream.</p>
+      <p data-reveal>The result can inform directions for an audio or audiovisual generator: what happens, how delivery changes, and how each moment relates to the scene.</p>
+    </article>
+    <div class="pn-flows__meet" aria-hidden="true" data-reveal><span>intention</span><i></i><span>evidence</span></div>
+    <article class="pn-flow pn-flow--annotation" aria-labelledby="flow-annotation">
+      <h3 id="flow-annotation" data-reveal>Performance annotation</h3>
+      <ol class="pn-flow__nodes" data-reveal>
+        <li style="--i:0"><span>01</span>The recorded performance</li>
+        <li style="--i:1"><span>02</span>Available modalities</li>
+        <li style="--i:2"><span>03</span>Time-linked events</li>
+        <li style="--i:3"><span>04</span>Direct observations</li>
+        <li style="--i:4"><span>05</span>Qualified interpretations</li>
+        <li style="--i:5"><span>06</span>Impressions and task-fit judgments</li>
+      </ol>
+      <p data-reveal>Start from the recorded performance. Describe the available modalities and time-linked events, then distinguish direct observations from qualified interpretations, impressions, and task-fit judgments.</p>
+      <p data-reveal>A requested emotion is not automatically an observed one. Missing evidence stays missing, and an expression does not establish a person’s private psychological state.</p>
+    </article>
+  </div>
 </section>
-<section class="walk-panel" id="performance-step-5" aria-labelledby="performance-title-5">
-<div>
-<p class="eyebrow">05 · Evidence</p>
-<h3 id="performance-title-5">Return to what can actually be observed.</h3>
-<p>The annotation system starts from recorded media and the modalities available. Time-linked observations stay distinct from qualified interpretations, observer impressions, and judgments about task fit.</p>
-<p class="small-note">Without an actual recording, observable fields remain unfilled. A prompt is not proof of what the output did.</p>
-</div>
-<div class="stage-art"><span class="stage-label">No recording supplied in this illustration</span>
-<div class="stage-flow"><span>Authored target · reassurance</span><span>Audible evidence · not yet annotated</span><span>Observer impression · not yet assessed</span>
-</div><span class="stage-label">Compare intention with evidence</span>
-</div>
+
+<section class="pn-shell pn-library" aria-labelledby="library-title">
+  <p class="eyebrow" data-reveal>The reference library</p>
+  <h2 id="library-title" data-reveal>Four lenses <em>on the same scene.</em></h2>
+  <div class="pn-lens-grid">
+    <article class="pn-lens pn-lens--situation" data-reveal>
+      <div class="pn-lens__art" data-lens-art="situation" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
+      <p class="pn-lens__num">01</p>
+      <h3>Situation taxonomy</h3>
+      <p>The conditions, tasks, and constraints around a performance. A reassuring line during a rescue has a different context from the same words in a rehearsal.</p>
+    </article>
+    <article class="pn-lens pn-lens--emo" data-reveal style="--i:1">
+      <div class="pn-lens__art" data-lens-art="emo" aria-hidden="true"></div>
+      <p class="pn-lens__num">02 · <span>40 labels · 320 cells</span></p>
+      <h3>EmoNet</h3>
+      <p>40 emotion and state labels, organized into 320 intensity–expression cells. Authored feeling, requested expression, and observer interpretation remain distinct.</p>
+    </article>
+    <article class="pn-lens pn-lens--voice" data-reveal style="--i:2">
+      <div class="pn-lens__art" data-lens-art="voice" aria-hidden="true"></div>
+      <p class="pn-lens__num">03 · <span>57 fields</span></p>
+      <h3>VoiceNet</h3>
+      <p>A specialist vocal codebook with 57 fields. Its descriptors give speech a more precise vocabulary, with field-specific scales rather than one universal rating.</p>
+    </article>
+    <article class="pn-lens pn-lens--perf" data-reveal style="--i:3">
+      <div class="pn-lens__art" data-lens-art="perf" aria-hidden="true"></div>
+      <p class="pn-lens__num">04 · <span>82 fields + 8 impression scales</span></p>
+      <h3>PerformanceNet</h3>
+      <p>82 descriptive fields: 79 ordinal fields and three categorical capture fields, plus eight separate observer-impression scales.</p>
+    </article>
+  </div>
+  <p class="small-note" data-reveal>These counts describe the reference systems. They are not model capabilities, benchmark results, or a measure of dataset coverage. Each mark above stands for one field or cell.</p>
 </section>
-<div class="walk-controls" data-enhanced hidden><span class="walk-status" data-status role="status" aria-live="polite"></span>
-<button class="button" type="button" data-prev>← Previous</button>
-<button class="button" type="button" data-next>Next →</button>
-<button class="button" type="button" data-play aria-pressed="false">Play walkthrough</button>
-</div>
-</div>
+
+<section class="pn-shell pn-work" aria-labelledby="work-title">
+  <div>
+    <p class="eyebrow" data-reveal>Putting it to work</p>
+    <h2 id="work-title" data-reveal>More precise questions. <em>More useful comparisons.</em></h2>
+  </div>
+  <div>
+    <p data-reveal>Use the library to encode scenes consistently, design varied synthetic performances, filter examples by explicit criteria, or group datasets by situation and behavior.</p>
+    <p data-reveal>For training and evaluation, its structured descriptions can help define task-conditioned supervision. The judgment still depends on the task, the evidence, and how annotations are collected; there is no universal “good performance” score.</p>
+    <p data-reveal>Our <a href="../humaneness-voice-large-1-3-alpha/">Voice Large 1.3 Alpha release</a> explores the speech side of this research direction: literal words, global scene intention, and local performance beats.</p>
+  </div>
 </section>
-<section class="article-section">
-<p class="eyebrow">Two connected workflows</p>
-<h2>Write the intention.<br>Annotate the performance.</h2>
-<div class="article-columns article-rule">
-<div>
-<h3>Script analysis</h3>
-<p>Start from a book, screenplay, stage scene, radio script, or other source. Character Makeup and seven Dramatic Obligations provide context for ordered Acting Beats. One Experience Chunk inside each beat records its authored inner stream.</p>
-<p>The result can inform directions for an audio or audiovisual generator: what happens, how delivery changes, and how each moment relates to the scene.</p>
-</div>
-<div>
-<h3>Performance annotation</h3>
-<p>Start from the recorded performance. Describe the available modalities and time-linked events, then distinguish direct observations from qualified interpretations, impressions, and task-fit judgments.</p>
-<p>A requested emotion is not automatically an observed one. Missing evidence stays missing, and an expression does not establish a person’s private psychological state.</p>
-</div>
-</div>
+
+<section class="pn-cta" aria-labelledby="cta-title">
+  <div class="pn-shell">
+    <p class="eyebrow" data-reveal>Open research library</p>
+    <h2 id="cta-title" data-reveal>Explore the original library.</h2>
+    <p data-reveal>The Hugging Face Space includes the integrated reference, Script Analysis System, Performance Annotation System, and supporting vocabularies. Consult the individual materials for their attribution and licensing terms.</p>
+    <div class="actions" data-reveal><a class="button button--primary" href="https://huggingface.co/spaces/laion/Humaneness-PerformanceNet">Explore PerformanceNet ↗</a></div>
+  </div>
 </section>
-<section class="article-section">
-<p class="eyebrow">The reference library</p>
-<h2>Four lenses on the same scene.</h2>
-<div class="lens-grid">
-<div>
-<h3>01 · Situation taxonomy</h3>
-<p>The conditions, tasks, and constraints around a performance. A reassuring line during a rescue has a different context from the same words in a rehearsal.</p>
-</div>
-<div>
-<h3>02 · EmoNet</h3>
-<p>40 emotion and state labels, organized into 320 intensity–expression cells. Authored feeling, requested expression, and observer interpretation remain distinct.</p>
-</div>
-<div>
-<h3>03 · VoiceNet</h3>
-<p>A specialist vocal codebook with 57 fields. Its descriptors give speech a more precise vocabulary, with field-specific scales rather than one universal rating.</p>
-</div>
-<div>
-<h3>04 · PerformanceNet</h3>
-<p>82 descriptive fields: 79 ordinal fields and three categorical capture fields, plus eight separate observer-impression scales.</p>
-</div>
-</div>
-<p class="small-note">These counts describe the reference systems. They are not model capabilities, benchmark results, or a measure of dataset coverage.</p>
-</section>
-<section class="article-section article-columns article-rule">
-<div>
-<p class="eyebrow">Putting it to work</p>
-<h2>More precise questions.<br>More useful comparisons.</h2>
-</div>
-<div>
-<p>Use the library to encode scenes consistently, design varied synthetic performances, filter examples by explicit criteria, or group datasets by situation and behavior.</p>
-<p>For training and evaluation, its structured descriptions can help define task-conditioned supervision. The judgment still depends on the task, the evidence, and how annotations are collected; there is no universal “good performance” score.</p>
-<p>Our <a href="../humaneness-voice-large-1-3-alpha/">Voice Large 1.3 Alpha release</a> explores the speech side of this research direction: literal words, global scene intention, and local performance beats.</p>
-</div>
-</section>
-<section class="article-section article-callout">
-<h2>Explore the original library.</h2>
-<p>The Hugging Face Space includes the integrated reference, Script Analysis System, Performance Annotation System, and supporting vocabularies. Consult the individual materials for their attribution and licensing terms.</p>
-<div class="actions"><a class="button button--primary" href="https://huggingface.co/spaces/laion/Humaneness-PerformanceNet">Explore PerformanceNet ↗</a>
-</div>
-</section>
-<aside class="article-end">
-<div>
-<p class="eyebrow">Keep exploring</p>
-<h2>Hear a performance take shape.</h2>
-<p>Listen to Voice Large 1.3 Alpha and explore the architecture behind its speech.</p>
-</div><a class="button" href="../humaneness-voice-large-1-3-alpha/">Read the release ↗</a>
+
+<aside class="pn-shell pn-next" aria-labelledby="next-title">
+  <div>
+    <p class="eyebrow">Keep exploring</p>
+    <h2 id="next-title">Hear a performance take shape.</h2>
+    <p>Listen to Voice Large 1.3 Alpha and explore the architecture behind its speech.</p>
+  </div>
+  <a class="button" href="../humaneness-voice-large-1-3-alpha/">Read the release ↗</a>
 </aside>
-</article>
 </main>
+
 <footer class="site-footer shell">
 <p>Humaneness Labs — building quietly.</p>
 <nav class="footer-nav" aria-label="Footer navigation"><a href="../../blog/">Blog</a><a href="../../about.html">About us</a><a href="../../impressum.html">Legal notice</a>
 </nav>
 <p class="site-footer__meta">© 2026 · Made in Europe</p>
 </footer>
-<script src="../../assets/js/blog.js?v=787af490b71d" defer></script></body></html>
+<script src="../../assets/js/performancenet.js?v=bb6827cd1cc4" defer></script>
+</body>
+</html>

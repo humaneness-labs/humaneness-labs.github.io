@@ -21,14 +21,23 @@ The journal lives at `docs/blog/index.html`, with standalone release pages in
 `docs/blog/humaneness-performancenet/` and
 `docs/blog/humaneness-voice-large-1-3-alpha/`. These pages use the shared site
 fonts plus `docs/assets/css/blog.css`; no build step or third-party embed is
-required. PerformanceNet keeps its stepped walkthrough in `docs/assets/js/blog.js`.
+required.
+
+### PerformanceNet release
+
+`docs/assets/css/performancenet.css` and `docs/assets/js/performancenet.js` turn
+the scene study into a sticky board that changes state as each step card
+scrolls past (character, intention, beats, vocabulary, evidence). The library
+section draws one mark per field or cell of each reference system, so the
+portraits match the published counts. Without JavaScript the steps read as
+plain cards; with reduced motion the board switches states without animating.
 
 ### Voice Large 1.3 Alpha release
 
 The release page is a scroll story built from three scripts:
 
 - `docs/assets/js/voice-clips.js` — generated data: a 25 Hz loudness envelope
-  and phrase timings for each of the nine MP3s in
+  and phrase timings for each of the eleven MP3s in
   `docs/assets/audio/voice-large-1-3-alpha/`.
 - `docs/assets/js/voice.js` — one shared Web Audio engine (crossfades, ducking,
   sentence-synced language switching) and the waveform players with live

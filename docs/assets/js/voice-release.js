@@ -12,7 +12,7 @@
   const supported = Boolean(V && V.supported);
   const reducedQuery = matchMedia("(prefers-reduced-motion: reduce)");
   const HERO = "awe_tenderness_en_reference";
-  const SUNRISE = ["awe_tenderness_en_reference", "awe_tenderness_de_reference", "awe_tenderness_fr_reference", "awe_tenderness_nl_prompt_only"];
+  const SUNRISE = ["awe_tenderness_en_reference", "awe_tenderness_de_reference", "awe_tenderness_fr_reference", "awe_tenderness_es_reference", "awe_tenderness_nl_prompt_only"];
   const MONO = '"Spline Sans Mono", ui-monospace, monospace';
 
   const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
@@ -865,7 +865,7 @@
       if (this.index >= 0 && (rect.top > middle || rect.bottom < middle)) return;
       const p = this.progress();
       this.fill.style.setProperty("--p", p.toFixed(4));
-      const index = Math.min(3, Math.floor(p * 4));
+      const index = Math.min(SUNRISE.length - 1, Math.floor(p * SUNRISE.length));
       if (index !== this.index) this.setLanguage(index);
     }
 
@@ -982,9 +982,21 @@
       this.bars = [...element.querySelectorAll(".vr-dock__eq i")];
       element.hidden = false;
       this.button.addEventListener("click", () => this.toggle());
+      // Show once the hero's own play button has scrolled away; step aside for the footer links.
+      let pastHero = false;
+      let atFooter = false;
+      const place = () => element.classList.toggle("is-visible", pastHero && !atFooter);
       new IntersectionObserver(([entry]) => {
-        element.classList.toggle("is-visible", !entry.isIntersecting && entry.boundingClientRect.top < 0);
+        pastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+        place();
       }).observe(watch);
+      const footer = document.querySelector(".site-footer");
+      if (footer) {
+        new IntersectionObserver(([entry]) => {
+          atFooter = entry.isIntersecting;
+          place();
+        }).observe(footer);
+      }
       V.onChange(() => this.sync());
       V.onFrame((t) => this.levels(t));
       this.sync();

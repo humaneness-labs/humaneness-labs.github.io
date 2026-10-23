@@ -15,6 +15,7 @@
     en: { name: "English", native: "English" },
     de: { name: "German", native: "Deutsch" },
     fr: { name: "French", native: "Français" },
+    es: { name: "Spanish", native: "Español" },
     nl: { name: "Dutch", native: "Nederlands" }
   };
 
@@ -68,7 +69,7 @@
   function info(id) {
     if (infoCache.has(id)) return infoCache.get(id);
     const data = clipData[id];
-    const match = id && id.match(/^(.+)_(en|de|fr|nl)_(reference|prompt_only)$/);
+    const match = id && id.match(/^(.+)_(en|de|fr|es|nl)_(reference|prompt_only)$/);
     if (!data || !match) return null;
     const words = [];
     data.phrases.forEach(([t0, t1, text, sentence]) => {

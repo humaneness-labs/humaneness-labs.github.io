@@ -32,7 +32,7 @@ for scene, body in re.findall(r'<article class="vr-scene" data-scene="([a-z_]+)"
 scripts = {}
 for name in sorted(os.listdir(AUDIO)):
     clip = name[:-4]
-    scene, lang = re.match(r"(.+)_(en|de|fr|nl)_(?:reference|prompt_only)$", clip).groups()
+    scene, lang = re.match(r"(.+)_(en|de|fr|es|nl)_(?:reference|prompt_only)$", clip).groups()
     scripts[clip] = scene_scripts[(scene, lang)]
 
 
