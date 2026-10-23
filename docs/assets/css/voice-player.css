@@ -1,0 +1,124 @@
+/* Waveform players shared by the homepage release card and the release post. */
+@property --beat-color {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #e4998b;
+}
+
+:root { --beat-color: #e4998b; }
+
+.vplayer { --beat: var(--beat-color); display: grid; gap: .85rem; min-width: 0; }
+.vplayer__variants { display: flex; flex-wrap: wrap; gap: .45rem; }
+.vplayer__variant {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 40px;
+  padding: .45rem .85rem;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  background: rgb(255 255 255 / .02);
+  color: var(--mute);
+  cursor: pointer;
+  font: 400 .78rem/1 var(--body);
+  transition: border-color 250ms var(--ease-out), color 250ms var(--ease-out), background 250ms var(--ease-out);
+}
+.vplayer__variant b { color: var(--bone); font: 400 .7rem/1 var(--mono); letter-spacing: .1em; }
+.vplayer__variant:hover { border-color: #6d5a58; color: var(--bone); }
+.vplayer__variant[aria-pressed="true"] { border-color: var(--journal-accent, #e9ad91); background: rgb(233 173 145 / .12); color: var(--bone); }
+
+.vplayer__row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(.75rem, 2vw, 1.15rem); }
+.vplayer__toggle {
+  position: relative;
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: var(--bone);
+  color: var(--ink-deep);
+  cursor: pointer;
+  transition: transform 220ms var(--ease-out), box-shadow 400ms var(--ease-out), background 300ms;
+}
+.vplayer__toggle:hover { transform: scale(1.06); background: #fff; }
+.vplayer.is-playing .vplayer__toggle { box-shadow: 0 0 0 6px color-mix(in srgb, var(--beat) 22%, transparent), 0 0 34px color-mix(in srgb, var(--beat) 38%, transparent); }
+.vplayer.is-loading .vplayer__toggle::after {
+  content: "";
+  position: absolute;
+  inset: -5px;
+  border: 2px solid transparent;
+  border-top-color: var(--beat);
+  border-radius: 50%;
+  animation: vplayer-spin 800ms linear infinite;
+}
+
+/* Play ↔ pause: the triangle folds into the first bar, the second bar appears. */
+.vplayer__icon { position: relative; display: block; width: 15px; height: 17px; }
+.vplayer__icon::before, .vplayer__icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transition: clip-path 260ms var(--ease-out), opacity 200ms;
+}
+.vplayer__icon::before { left: 2px; clip-path: polygon(0 0, 100% 50%, 100% 50%, 0 100%); }
+.vplayer__icon::after { opacity: 0; clip-path: polygon(64% 0, 100% 0, 100% 100%, 64% 100%); }
+.is-playing .vplayer__icon::before, [aria-pressed="true"] > .vr-listen__disc .vplayer__icon::before { left: 0; clip-path: polygon(0 0, 36% 0, 36% 100%, 0 100%); }
+.is-playing .vplayer__icon::after, [aria-pressed="true"] > .vr-listen__disc .vplayer__icon::after { opacity: 1; }
+
+.vplayer__wave { position: relative; height: 56px; border-radius: 6px; cursor: pointer; touch-action: pan-y; }
+.vplayer__wave canvas { display: block; width: 100%; height: 100%; }
+.vplayer__wave:focus-visible { outline: 2px solid var(--journal-accent, #e9ad91); outline-offset: 4px; }
+.vplayer__time { min-width: 6.5ch; color: var(--mute); font: .7rem/1 var(--mono); font-variant-numeric: tabular-nums; text-align: right; }
+
+.vplayer { position: relative; }
+.vplayer__beats { position: relative; width: var(--wave-width, 100%); height: 1.6rem; margin-left: var(--wave-left, 0); }
+.vplayer__beat {
+  position: absolute;
+  top: 0;
+  left: var(--x);
+  width: var(--w);
+  overflow: hidden;
+  padding: .45rem .5rem 0 0;
+  border-top: 2px solid var(--beat);
+  color: var(--beat);
+  font: .6rem/1 var(--mono);
+  letter-spacing: .08em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.vplayer__caption { min-height: 2.9em; margin: 0; color: var(--mute); font-family: var(--display); font-size: clamp(1.02rem, .95rem + .45vw, 1.3rem); line-height: 1.45; text-wrap: pretty; }
+.vplayer__fallback { display: grid; gap: .75rem; margin: 0; padding: 0; list-style: none; color: var(--mute); font-size: .85rem; }
+.vplayer__fallback li { display: grid; gap: .35rem; }
+.vplayer__fallback audio { width: 100%; height: 40px; }
+
+/* Words light up as they are spoken (timings are aligned to pauses, so approximate). */
+.vr-caption .w, .vplayer__caption .w { color: rgb(234 230 223 / .3); transition: color 260ms ease-out; }
+.vr-caption .w.is-said, .vplayer__caption .w.is-said { color: var(--bone); }
+.vr-caption .w.is-now, .vplayer__caption .w.is-now { color: var(--beat, var(--beat-color)); }
+
+@keyframes vplayer-spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 540px) {
+  .vplayer__toggle { width: 46px; height: 46px; }
+  .vplayer__wave { height: 48px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vplayer *, .vplayer *::before, .vplayer *::after { transition: none !important; }
+  .vplayer.is-loading .vplayer__toggle::after { animation-duration: 2.4s; }
+}
+
+/* Homepage release card */
+.vplayer--feature { gap: .75rem; margin-top: 1.4rem; }
+.vplayer--feature .vplayer__variant { min-height: 36px; padding: .35rem .75rem; font-size: .74rem; }
+.vplayer--feature .vplayer__wave { height: 50px; }
+.vplayer--feature .vplayer__caption { min-height: 4.35em; margin: 0; font-size: 1rem; }
+.release-feature { transition: border-color 600ms ease, box-shadow 900ms ease; }
+.release-feature:has(.vplayer.is-playing) {
+  border-color: color-mix(in srgb, var(--beat-color) 55%, #5b4544);
+  box-shadow: 0 0 90px -24px color-mix(in srgb, var(--beat-color) 50%, transparent);
+}

@@ -20,15 +20,42 @@ Then open <http://127.0.0.1:4173/>.
 The journal lives at `docs/blog/index.html`, with standalone release pages in
 `docs/blog/humaneness-performancenet/` and
 `docs/blog/humaneness-voice-large-1-3-alpha/`. These pages use the shared site
-fonts plus `docs/assets/css/blog.css` and `docs/assets/js/blog.js`; no build step
-or third-party embed is required.
+fonts plus `docs/assets/css/blog.css`; no build step or third-party embed is
+required. PerformanceNet keeps its stepped walkthrough in `docs/assets/js/blog.js`.
 
-The walkthroughs show all steps when JavaScript is unavailable. With JavaScript,
-readers can select a step or start a timed walkthrough; animations respect the
-reduced-motion preference. Audio uses native players, loads on demand, and plays
-one example at a time. The nine distinct supplied MP3s are hosted under
-`docs/assets/audio/voice-large-1-3-alpha/` (the duplicate Dutch attachment is
-included once). Waveform illustrations use amplitude samples from those files.
+### Voice Large 1.3 Alpha release
 
-When editing shared CSS or JavaScript, update the `?v=` content hashes in HTML
-references so returning visitors receive the updated assets.
+The release page is a scroll story built from three scripts:
+
+- `docs/assets/js/voice-clips.js` — generated data: a 25 Hz loudness envelope
+  and phrase timings for each of the nine MP3s in
+  `docs/assets/audio/voice-large-1-3-alpha/`.
+- `docs/assets/js/voice.js` — one shared Web Audio engine (crossfades, ducking,
+  sentence-synced language switching) and the waveform players with live
+  captions. Also used by the release card on the homepage.
+- `docs/assets/js/voice-release.js` — the page itself: the hero voice line, the
+  canvas architecture that assembles as you scroll, the language section, the
+  listening room and the sound dock.
+
+Sound is opt-in: nothing plays until the reader presses play or turns sound on.
+After that, sections can start, duck or crossfade voices as the reader scrolls,
+and pausing turns scroll-driven sound off again. Without JavaScript every step,
+script and native audio player is still shown; with reduced motion the
+architecture settles into five still states.
+
+Phrase timings are aligned to pauses detected in the audio, so captions are
+approximate. After changing clips or scene scripts, regenerate the data (needs
+`ffmpeg`):
+
+```sh
+python3 tools/analyze_voice_clips.py docs docs/assets/js/voice-clips.js
+```
+
+### Cache busting
+
+After editing any CSS or JavaScript, refresh the `?v=` content hashes in every
+HTML reference so returning visitors receive the updated assets:
+
+```sh
+python3 tools/stamp_assets.py
+```
