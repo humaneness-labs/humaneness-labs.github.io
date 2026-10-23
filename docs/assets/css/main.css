@@ -108,7 +108,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--stream-blue); o
   padding: clamp(1.25rem, 3vw, 2.25rem) clamp(1.35rem, 5vw, 5rem);
 }
 
-.site-nav { display: flex; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); }
+.site-nav { display: flex; flex-wrap: wrap; align-items: center; gap: clamp(1rem, 3vw, 2.5rem); }
 .site-nav a[aria-current="page"], .footer-nav a[aria-current="page"] { color: var(--bone); }
 
 .wordmark {

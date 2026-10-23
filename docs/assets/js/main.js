@@ -84,7 +84,7 @@
         acceptNode(node) {
           const parent = node.parentElement;
           if (!parent || !node.textContent.trim()) return NodeFilter.FILTER_REJECT;
-          if (parent.closest("script, style, canvas, .brand-mark")) return NodeFilter.FILTER_REJECT;
+          if (parent.closest("script, style, canvas, svg, audio, .brand-mark, [data-no-line-color]")) return NodeFilter.FILTER_REJECT;
           return NodeFilter.FILTER_ACCEPT;
         }
       });
