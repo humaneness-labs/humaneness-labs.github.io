@@ -33,6 +33,8 @@
 .release-card .read-link { display: inline-block; color: var(--journal-accent); margin-top: 1rem; }
 .release-card:hover .read-link { transform: translateX(5px); }
 .release-card__art { min-height: 240px; display: grid; align-content: center; gap: 1rem; padding: 2rem; border: 1px solid var(--hairline); border-radius: 8px; background: radial-gradient(ellipse at 70% 30%, #52362f55, transparent 80%), #15151f; }
+.release-card__art--teal { background: radial-gradient(ellipse at 80% 20%, #2e5a5455, transparent 80%), #15151f; }
+.release-card__art--teal .art-title em { color: #8fd6c8; }
 .release-card__art--blue { background: radial-gradient(ellipse at 20% 50%, #2e3b6655, transparent 80%), #15151f; }
 .release-card__art .art-title { font: 500 clamp(1.7rem, 3vw, 2.5rem)/1.15 var(--display); letter-spacing: -.04em; }
 .release-card__art .art-title em { color: var(--journal-accent); font-style: normal; }

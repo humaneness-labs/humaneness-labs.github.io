@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101018">
+<meta name="description" content="Humaneness Labs is a new research group within LAION. Our first release, Humaneness Ears, hears emotion, voice and vocal bursts in one forward pass.">
+<title>Introducing Humaneness Labs and Humaneness Ears — Humaneness Labs</title>
+<link rel="canonical" href="https://humaneness.ai/blog/introducing-humaneness-labs/">
+<meta property="og:type" content="article"><meta property="og:title" content="We begin by listening: introducing Humaneness Labs">
+<meta property="og:description" content="A new research group within LAION. Our first release, Humaneness Ears, hears emotion, voice and vocal bursts in one forward pass."><meta property="og:url" content="https://humaneness.ai/blog/introducing-humaneness-labs/">
+<meta property="og:image" content="https://humaneness.ai/assets/og/og-image.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../../logo.svg" type="image/svg+xml">
+<link rel="preload" href="../../assets/fonts/bricolage-grotesque-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../../assets/fonts/instrument-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../../assets/css/main.css?v=dda4b2245638">
+<link rel="stylesheet" href="../../assets/css/blog.css?v=b44b9e291b29">
+<link rel="stylesheet" href="../../assets/css/ears.css?v=b9179ea980cc">
+</head>
+<body class="ea-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header" aria-label="Primary"><a class="wordmark" href="../../" aria-label="Humaneness Labs, home"><span class="brand-mark" aria-hidden="true"></span><span>Humaneness Labs</span></a>
+<nav class="site-nav" aria-label="Main navigation"><a class="text-link" href="../../blog/">Blog</a><a class="text-link" href="../../about.html">About us</a><a class="text-link site-header__contact" href="../../#contact">Research partnerships</a>
+</nav>
+</header>
+
+<main id="main" class="ea" tabindex="-1">
+
+<section class="ea-hero" aria-labelledby="ea-title">
+  <div class="ea-shell ea-hero__grid">
+    <div class="ea-hero__text">
+      <p class="eyebrow ea-rise">Release 01 · A new research group within LAION · <time datetime="2026-10-24">24 October 2026</time></p>
+      <h1 id="ea-title" class="ea-hero__title"><span class="ea-rise">We begin</span> <em class="ea-rise">by listening.</em></h1>
+      <p class="ea-hero__intro ea-rise">Humaneness Labs is a new research group within LAION, building the behavior layer for AI. Our first release is <strong>Humaneness Ears</strong>: open audio encoders that hear emotion, voice, and the small sounds between words — in a single forward pass.</p>
+      <div class="actions ea-rise"><a class="button button--primary" href="https://laion-humaneness-ears-atlas.static.hf.space/">Explore the listening atlas ↗</a><a class="button" href="#pass">See how it listens ↓</a></div>
+    </div>
+    <figure class="ea-ring ea-rise" aria-label="A ring of 192 marks, one for each score Humaneness Ears predicts from a single recording.">
+      <canvas data-ring aria-hidden="true"></canvas>
+      <figcaption><strong>192</strong><span>scores from one forward pass</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="ea-shell ea-stats" aria-label="Humaneness Ears at a glance">
+  <dl>
+    <div data-reveal><dt>Scores per recording</dt><dd data-count="192">192</dd></div>
+    <div data-reveal style="--i:1"><dt>EmoNet emotions, at once</dt><dd data-count="40">40</dd></div>
+    <div data-reveal style="--i:2"><dt>VoiceNet voice dimensions</dt><dd data-count="57">57</dd></div>
+    <div data-reveal style="--i:3"><dt>Kinds of vocal burst</dt><dd data-count="53">53</dd></div>
+  </dl>
+</section>
+
+<section class="ea-shell ea-group" aria-labelledby="group-title">
+  <div class="ea-group__head">
+    <p class="eyebrow" data-reveal>Who we are</p>
+    <h2 id="group-title" data-reveal>A new group <em>within LAION.</em></h2>
+  </div>
+  <div class="ea-group__copy">
+    <p data-reveal>Humaneness Labs is a research group within <a href="https://laion.ai/">LAION</a>, the non-profit open AI research network. We study the behavior layer for AI: models of attention, emotion, perception, and social context that make interaction feel present.</p>
+    <p data-reveal>We work the way LAION has always worked — in the open. Models, code, and datasets are shared so that others can test them, question them, and build on them.</p>
+  </div>
+  <ul class="ea-people" aria-label="The people behind Humaneness Labs">
+    <li data-reveal><span class="ea-people__mark" aria-hidden="true">CS</span><strong>Christoph Schuhmann</strong><span>Education · co-founder of LAION</span></li>
+    <li data-reveal style="--i:1"><span class="ea-people__mark" aria-hidden="true">RK</span><strong>Robert Kaczmarczyk</strong><span>Medicine · co-founder of LAION</span></li>
+    <li data-reveal style="--i:2"><span class="ea-people__mark" aria-hidden="true">GW</span><strong>Gijs Wijngaard</strong><span>Machine listening · LAION</span></li>
+    <li data-reveal style="--i:3" class="ea-people__more"><a href="../../about.html">Meet the team ↗</a></li>
+  </ul>
+</section>
+
+<section class="ea-shell ea-why" aria-labelledby="why-title">
+  <p class="eyebrow" data-reveal>Why listening comes first</p>
+  <h2 id="why-title" class="ea-visually-hidden">Why listening comes first</h2>
+  <p class="ea-scrub" data-scrub>Before a machine can respond as if it were present, it has to notice what people actually do: the hesitation before an answer, the laugh that breaks a sentence, the breath that says more than the words.</p>
+  <div class="ea-why__cols">
+    <p data-reveal>Voice reveals far more than words. Timing, breath, rhythm, effort, hesitation, and tiny shifts in articulation all expose what is happening beneath the surface. That is why our research starts here.</p>
+    <p data-reveal style="--i:1">Humaneness Ears is the perception layer: it turns a recording into a rich, structured description of how something was said. It does not transcribe, caption, or generate speech.</p>
+  </div>
+</section>
+
+<section class="ea-pass" id="pass" aria-labelledby="pass-title">
+  <header class="ea-shell ea-pass__intro">
+    <p class="eyebrow" data-reveal>Inside Humaneness Ears</p>
+    <h2 id="pass-title" data-reveal>One recording. <em>One forward pass.</em></h2>
+    <p class="ea-lede" data-reveal>Scroll through what happens between a sound arriving and the model’s answer. The shapes are illustrations of each output; the counts and specifications are exact.</p>
+  </header>
+  <div class="ea-pass__track" data-pass>
+    <div class="ea-pass__stage">
+      <nav class="ea-rail" aria-label="Forward pass steps">
+        <ol>
+          <li><a href="#pass-1" data-rail><span>01</span>Hear</a></li>
+          <li><a href="#pass-2" data-rail><span>02</span>Encode</a></li>
+          <li><a href="#pass-3" data-rail><span>03</span>Feel</a></li>
+          <li><a href="#pass-4" data-rail><span>04</span>Describe</a></li>
+          <li><a href="#pass-5" data-rail><span>05</span>Locate</a></li>
+        </ol>
+        <span class="ea-rail__progress" aria-hidden="true"><i data-pass-fill></i></span>
+      </nav>
+      <div class="ea-board" data-board data-stage="0" aria-hidden="true">
+        <div class="ea-layer ea-hear">
+          <canvas class="ea-hear__wave" data-wave></canvas>
+          <canvas class="ea-hear__mel" data-mel></canvas>
+          <p class="ea-hear__specs"><span>0.1–30 s</span><span>mono</span><span>16 kHz</span><span>80 mel bins</span></p>
+        </div>
+        <div class="ea-layer ea-encode">
+          <div class="ea-stack ea-stack--base"><p>Base<small>Whisper Base · 6 layers · width 512</small></p><ol data-layers="6"></ol><b>26.4M parameters</b></div>
+          <div class="ea-stack ea-stack--medium"><p>Medium<small>Whisper Small · 12 layers · width 768</small></p><ol data-layers="12"></ol><b>97.1M parameters</b></div>
+          <div class="ea-decoder"><span>Text decoder</span><small>not included · no transcripts</small></div>
+        </div>
+        <div class="ea-layer ea-feel">
+          <div class="ea-emotions" data-emotions></div>
+          <div class="ea-feel__legend" data-emotion-legend></div>
+          <div class="ea-gauge"><span>Genuineness</span><i><b></b></i><small>0–6</small></div>
+        </div>
+        <div class="ea-layer ea-describe">
+          <div class="ea-dots" data-dots></div>
+          <div class="ea-families" data-families></div>
+          <div class="ea-vectors"><p><span>Orange timbre</span><i data-vector="128"></i><small>128D</small></p><p><span>Orange identity</span><i data-vector="250"></i><small>250D</small></p><p><span>Speaking rate</span><i class="ea-vectors__one"></i><small>chars / s</small></p></div>
+        </div>
+        <div class="ea-layer ea-locate">
+          <canvas class="ea-locate__frames" data-frames></canvas>
+          <div class="ea-events">
+            <span class="ea-event" style="--a:.22;--b:.36"><b>Chuckle</b><small>Laughter · Snicker</small></span>
+            <span class="ea-event" style="--a:.61;--b:.7"><b>Sharp Inhale</b><small>Breath · Surprised Gasp</small></span>
+          </div>
+          <p class="ea-locate__axis"><span>0 s</span><span>every frame = 20 ms</span><span>3 s</span></p>
+        </div>
+        <p class="ea-board__note">Illustration · counts and units are exact, shapes are not a recorded prediction</p>
+      </div>
+    </div>
+    <div class="ea-pass__steps">
+      <article class="ea-step" id="pass-1" aria-labelledby="pass-title-1">
+        <div class="ea-step__card">
+          <p class="eyebrow">01 · Hear</p>
+          <h3 id="pass-title-1">A recording becomes a picture of sound.</h3>
+          <p>Ears takes 0.1 to 30 seconds of audio. Stereo is averaged to mono, the signal is resampled to 16 kHz, and a Whisper frontend turns it into 80-bin log-mel features.</p>
+          <ul class="ea-specs"><li>0.1–30 seconds</li><li>16 kHz mono</li><li>80-bin log-mel</li></ul>
+        </div>
+      </article>
+      <article class="ea-step" id="pass-2" aria-labelledby="pass-title-2">
+        <div class="ea-step__card">
+          <p class="eyebrow">02 · Encode</p>
+          <h3 id="pass-title-2">A Whisper encoder, without the words.</h3>
+          <p>Base builds on a Whisper Base encoder, Medium on a Whisper Small encoder, both fully fine-tuned. There is no text decoder: every transformer layer contributes its own summary, and a learned gate mixes them for each recording.</p>
+          <ul class="ea-specs"><li>Base · 6 layers · 26.4M</li><li>Medium · 12 layers · 97.1M</li><li>No text decoder</li></ul>
+        </div>
+      </article>
+      <article class="ea-step" id="pass-3" aria-labelledby="pass-title-3">
+        <div class="ea-step__card">
+          <p class="eyebrow">03 · Feel</p>
+          <h3 id="pass-title-3">Forty emotions at once, not one label.</h3>
+          <p>Ears predicts the intensity of all 40 EmoNet emotions simultaneously, on a 0–4 reference scale. A voice can be amused and embarrassed at the same time. A separate head rates perceived genuineness from 0 to 6.</p>
+          <ul class="ea-specs"><li>40 EmoNet emotions</li><li>Intensity 0–4</li><li>Genuineness 0–6</li></ul>
+        </div>
+      </article>
+      <article class="ea-step" id="pass-4" aria-labelledby="pass-title-4">
+        <div class="ea-step__card">
+          <p class="eyebrow">04 · Describe</p>
+          <h3 id="pass-title-4">How it was said, in 192 numbers.</h3>
+          <p>Next to emotion come 57 VoiceNet dimensions of delivery, register, timbre, and style, plus sound-quality and attribute scores: 192 scalars from one pass. Separate heads estimate speaking rate and two speaker-characteristic vectors.</p>
+          <ul class="ea-specs"><li>192 scores</li><li>57 VoiceNet dimensions</li><li>128D + 250D vectors</li></ul>
+          <p class="small-note">The identity-style vector is not a person’s name or an identification guarantee.</p>
+        </div>
+      </article>
+      <article class="ea-step" id="pass-5" aria-labelledby="pass-title-5">
+        <div class="ea-step__card">
+          <p class="eyebrow">05 · Locate</p>
+          <h3 id="pass-title-5">Find the laugh, the sigh, the gasp.</h3>
+          <p>Every 20 milliseconds, Ears estimates whether a vocal burst is happening. It proposes events with a start and an end, up to 32 per clip, and gives each one its three most likely labels from 53 classes.</p>
+          <ul class="ea-specs"><li>20 ms frames</li><li>Start + end per event</li><li>53 burst classes</li></ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="ea-shell ea-explore" id="outputs" aria-labelledby="explore-title">
+  <div class="ea-explore__head">
+    <p class="eyebrow" data-reveal>All 192 outputs</p>
+    <h2 id="explore-title" data-reveal>Every score, <em>with its measured agreement.</em></h2>
+    <p class="ea-lede" data-reveal>Each tile is one output. Its brightness is the Pearson correlation between the model’s predictions and held-out test targets. Hover or tap a tile to read it; filter by family or switch models.</p>
+  </div>
+  <div class="ea-explorer" data-explorer hidden>
+    <div class="ea-explorer__controls">
+      <div class="ea-segment" role="group" aria-label="Model">
+        <button type="button" data-model="medium" aria-pressed="true">Medium</button>
+        <button type="button" data-model="base" aria-pressed="false">Base</button>
+      </div>
+      <div class="ea-filters" role="group" aria-label="Output family" data-filters></div>
+    </div>
+    <div class="ea-explorer__body">
+      <div class="ea-tiles" data-tiles role="list" aria-label="Model outputs"></div>
+      <aside class="ea-detail" data-detail aria-live="polite">
+        <p class="ea-detail__family" data-detail-family>Select a tile</p>
+        <h3 data-detail-name>192 outputs</h3>
+        <code data-detail-key>one forward pass</code>
+        <dl>
+          <div><dt>Base r</dt><dd data-detail-base>—</dd></div>
+          <div><dt>Medium r</dt><dd data-detail-medium>—</dd></div>
+          <div><dt>Test clips</dt><dd data-detail-n>—</dd></div>
+        </dl>
+        <p class="ea-detail__summary" data-summary></p>
+      </aside>
+    </div>
+    <div class="ea-scale" aria-hidden="true"><span>r ≤ 0.2</span><i></i><span>r ≥ 0.95</span></div>
+  </div>
+  <p class="small-note" data-reveal>Targets are machine annotations — Gemini labels and teacher models on 3,544 held-out clips, fewer for some outputs — not a fresh human panel. Source: the <a href="https://huggingface.co/laion/humaneness-ears-base-medium">Humaneness Ears model card</a>, which lists every output and metric.</p>
+</section>
+
+<section class="ea-bursts" aria-labelledby="bursts-title">
+  <div class="ea-shell">
+    <p class="eyebrow" data-reveal>Between the words</p>
+    <h2 id="bursts-title" data-reveal>53 kinds of sound <em>that aren’t speech.</em></h2>
+    <p class="ea-lede" data-reveal>Laughter, sighs, gasps, a nervous gulp. Ears marks where these vocal bursts begin and end, and suggests what they are.</p>
+    <ul class="ea-burst-cloud" data-burst-cloud aria-label="The 53 vocal-burst classes"><li>Other / rare burst</li><li>Affirmative Grunt</li><li>Ahem</li><li>Breath</li><li>Breathy Giggle</li><li>Cackle</li><li>Childlike Giggle</li><li>Chuckle</li><li>Contented Sigh</li><li>Cough</li><li>Crying</li><li>Displeased Grunt</li><li>Effort Grunt</li><li>Exasperated Sigh</li><li>Exhausted Groan</li><li>Fearful Gasp</li><li>Frustrated Groan</li><li>Growl</li><li>Guffaw</li><li>Gulp</li><li>Hiccup</li><li>Hum</li><li>Kissing Sound</li><li class="is-key">Laughter</li><li>Lip Smack</li><li>Low Mumble</li><li>Mournful Wail</li><li>Nervous Giggle</li><li class="is-key">Nervous Gulp</li><li>Purr</li><li>Quiet Sob</li><li>Relief Sigh</li><li>Scream</li><li>Sharp Inhale</li><li>Sharp Whistle</li><li>Shriek</li><li class="is-key">Sigh</li><li>Sneeze</li><li>Snicker</li><li>Sniff</li><li>Snort</li><li>Snorting Giggle</li><li>Soft Whistle</li><li>Spitting</li><li class="is-key">Surprised Gasp</li><li>Swallows</li><li>Throat Clearing</li><li>Tongue Click</li><li>Trembling Whimper</li><li>Tsk</li><li>Whispered Mumble</li><li>Wistful Sigh</li><li>Yawn</li></ul>
+    <p class="small-note" data-reveal>Event proposals reach high recall with many false positives, and fine labels are grouped into these 53 classes. Treat the labels as suggestions to listen to, not facts.</p>
+  </div>
+</section>
+
+<section class="ea-shell ea-measured" aria-labelledby="measured-title">
+  <div>
+    <p class="eyebrow" data-reveal>Measured, honestly</p>
+    <h2 id="measured-title" data-reveal>What it gets right, <em>and where it doesn’t.</em></h2>
+    <p data-reveal>On public human-label benchmarks, both models agree moderately with people. Medium is slightly ahead on emotion intensity; the two are close elsewhere. Neither is one universal best model.</p>
+    <ul class="ea-limits" data-reveal>
+      <li>Not a transcription or captioning model.</li>
+      <li>Training targets are machine annotations, not new human ratings.</li>
+      <li>Quality scores imitate teacher models rather than measuring human opinion.</li>
+      <li>Speaker vectors measure agreement with a teacher, not identity.</li>
+      <li>Clips over 30 seconds and multiple speakers need extra handling.</li>
+    </ul>
+  </div>
+  <div class="ea-bench" data-reveal>
+    <div class="ea-bench__legend" aria-hidden="true"><span class="is-base">Base</span><span class="is-medium">Medium</span></div>
+    <figure>
+      <figcaption>EmoNet-Voice intensity · Pearson r</figcaption>
+      <div class="ea-bar" style="--v:.4340"><span>Base</span><i></i><b>0.434</b></div>
+      <div class="ea-bar is-medium" style="--v:.4512"><span>Medium</span><i></i><b>0.451</b></div>
+    </figure>
+    <figure>
+      <figcaption>VoiceNet-Emo · mean Spearman ρ</figcaption>
+      <div class="ea-bar" style="--v:.4288"><span>Base</span><i></i><b>0.429</b></div>
+      <div class="ea-bar is-medium" style="--v:.4282"><span>Medium</span><i></i><b>0.428</b></div>
+    </figure>
+    <figure>
+      <figcaption>CREMA-D · accuracy, supervised adapter</figcaption>
+      <div class="ea-bar" style="--v:.6310"><span>Base</span><i></i><b>0.631</b></div>
+      <div class="ea-bar is-medium" style="--v:.6423"><span>Medium</span><i></i><b>0.642</b></div>
+    </figure>
+    <figure>
+      <figcaption>RAVDESS · accuracy, supervised adapter</figcaption>
+      <div class="ea-bar" style="--v:.6597"><span>Base</span><i></i><b>0.660</b></div>
+      <div class="ea-bar is-medium" style="--v:.6639"><span>Medium</span><i></i><b>0.664</b></div>
+    </figure>
+    <p class="small-note">CREMA-D and RAVDESS use small supervised adapters trained on the model’s 192 scores with actor cross-validation, not zero-shot predictions. The <a href="https://laion-whisper-base-small-emotion-voice-burst.static.hf.space/benchmark.html">full benchmark report</a> compares every target and baseline.</p>
+  </div>
+</section>
+
+<section class="ea-get" aria-labelledby="get-title">
+  <div class="ea-shell">
+    <p class="eyebrow" data-reveal>Open weights · CC BY 4.0</p>
+    <h2 id="get-title" data-reveal>Listen with it.</h2>
+    <div class="ea-models">
+      <article data-reveal>
+        <p class="ea-models__name">Humaneness Ears Base</p>
+        <p>Whisper Base encoder · 6 layers · width 512</p>
+        <strong>26.4M <small>parameters</small></strong>
+      </article>
+      <article data-reveal style="--i:1">
+        <p class="ea-models__name">Humaneness Ears Medium</p>
+        <p>Whisper Small encoder · 12 layers · width 768</p>
+        <strong>97.1M <small>parameters</small></strong>
+      </article>
+      <pre class="ea-code" data-reveal style="--i:2"><code><span class="c"># one clip, local CPU</span>
+python inference.py clip.wav --model medium --device cpu</code></pre>
+    </div>
+    <div class="actions" data-reveal>
+      <a class="button button--primary" href="https://huggingface.co/laion/humaneness-ears-base-medium">Get the models ↗</a>
+      <a class="button" href="https://laion-humaneness-ears-atlas.static.hf.space/">Listening atlas ↗</a>
+      <a class="button" href="https://laion-whisper-base-small-emotion-voice-burst.static.hf.space/benchmark.html">Benchmark report ↗</a>
+      <a class="button" href="https://huggingface.co/datasets/laion/whisper-gemini-voice-annotations">Annotation dataset ↗</a>
+    </div>
+    <p class="small-note" data-reveal>New weights, code, and documentation are released under CC BY 4.0; please credit Christoph Schuhmann and LAION. Upstream components keep their own terms: Whisper is MIT, and Orange’s identity teacher is CC BY-SA 3.0.</p>
+  </div>
+</section>
+
+<aside class="ea-shell ea-next" aria-labelledby="next-title">
+  <div>
+    <p class="eyebrow">What comes next</p>
+    <h2 id="next-title">Listening is the first layer.</h2>
+    <p>Next, we will share work on expressive speech and on a shared language for describing performance.</p>
+  </div>
+  <a class="button" href="../../about.html">Meet the team ↗</a>
+</aside>
+</main>
+
+<footer class="site-footer shell">
+<p>Humaneness Labs — building quietly.</p>
+<nav class="footer-nav" aria-label="Footer navigation"><a href="../../blog/">Blog</a><a href="../../about.html">About us</a><a href="../../impressum.html">Legal notice</a>
+</nav>
+<p class="site-footer__meta">© 2026 · Made in Europe · Part of <a href="https://laion.ai/">LAION</a></p>
+</footer>
+<script src="../../assets/js/ears-data.js?v=11bb4acd1945" defer></script>
+<script src="../../assets/js/ears.js?v=1328e3c3978b" defer></script>
+</body>
+</html>
