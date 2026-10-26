@@ -487,6 +487,7 @@ h1 em, h2 em, .pull-line, .platform-line em, .direction-lines em { font-style: n
 .page-intro { max-width: 58ch; margin: 2rem 0 0; color: var(--mute); font-size: var(--step-1); line-height: 1.5; }
 .founders { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: var(--space-m); margin-top: var(--space-m); }
 .founder { border-top: 1px solid var(--hairline); padding-top: 2rem; }
+.founder__photo { display: block; width: min(100%, 15rem); height: auto; aspect-ratio: 1; margin-bottom: 1.5rem; border: 1px solid var(--hairline); border-radius: 10px; object-fit: cover; }
 .founder h2 { font-size: clamp(1.7rem, .9rem + 1.15vw, 2.3rem); overflow-wrap: anywhere; }
 .founder p { max-width: 48ch; }
 .founder .eyebrow { margin-top: 1rem; color: var(--breath-amber); }
