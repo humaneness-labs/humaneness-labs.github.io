@@ -409,6 +409,7 @@ h1 em, h2 em, .pull-line, .platform-line em, .direction-lines em { font-style: n
 .lab-card--ears .lab-card__beats i:nth-child(1) { color: #8fd6c8; }
 .lab-card--ears .lab-card__beats i:nth-child(2) { color: var(--breath-rose); }
 .lab-card--ears .lab-card__beats i:nth-child(3) { color: var(--line-glow-rose); }
+.lab-card--performance .lab-card__kicker, .lab-card--performance .lab-card__link { color: #a9b6ff; }
 .lab-card--soon { border-style: dashed; background: transparent; }
 .lab-card--soon::before { display: none; }
 .lab-card--soon:hover { border-color: var(--hairline); transform: none; }

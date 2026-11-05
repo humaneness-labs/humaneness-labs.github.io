@@ -24,13 +24,13 @@ The journal lives at `docs/blog/index.html`, with standalone release pages in
 | Release | Page | Status |
 | --- | --- | --- |
 | 01 · Humaneness Labs + Humaneness Ears | `docs/blog/introducing-humaneness-labs/` | Published |
-| 02 · Humaneness PerformanceNet | `docs/blog/humaneness-performancenet/` | Hidden |
+| 02 · Humaneness PerformanceNet | `docs/blog/humaneness-performancenet/` | Published 5 November 2026 |
 | 03 · Humaneness Voice Large 1.3 Alpha | `docs/blog/humaneness-voice-large-1-3-alpha/` | Hidden |
 
 Hidden releases are unlisted: no public page links to them, and they carry
 `<meta name="robots" content="noindex">`. To publish one, add its card to
 `docs/blog/index.html` (and the homepage if wanted), remove the `noindex` line,
-and update its date, which still reads 23 October 2026.
+and update its date; the voice post still reads 23 October 2026.
 
 ### Release 01: Humaneness Labs and Humaneness Ears
 
