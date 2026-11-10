@@ -1,0 +1,122 @@
+{
+  "synthetic": true,
+  "display": "Emotion/style intensity indices rescaled to 0\u2013100; voice attributes use clipped training-reference indices. Not probabilities. Summary figures average displayed analysis windows.",
+  "entries": [
+    {
+      "id": "reflection",
+      "video_number": 1,
+      "synthetic": true,
+      "model": "laion/humaneness-ears-base-medium",
+      "variant": "medium",
+      "window_s": 5,
+      "hop_s": 0.75,
+      "source": "User-supplied synthetic demo"
+    },
+    {
+      "id": "anger",
+      "video_number": 2,
+      "synthetic": true,
+      "model": "laion/humaneness-ears-base-medium",
+      "variant": "medium",
+      "window_s": 5,
+      "hop_s": 0.75,
+      "source": "User-supplied synthetic demo",
+      "window_mean_display_scores": {
+        "Anger": 77.51846332620119,
+        "Dramatic delivery": 74.1764608433916
+      }
+    },
+    {
+      "id": "fear",
+      "video_number": 3,
+      "synthetic": true,
+      "model": "laion/humaneness-ears-base-medium",
+      "variant": "medium",
+      "window_s": 5,
+      "hop_s": 0.75,
+      "source": "User-supplied synthetic demo"
+    },
+    {
+      "id": "softness",
+      "video_number": 4,
+      "synthetic": true,
+      "model": "laion/humaneness-ears-base-medium",
+      "variant": "medium",
+      "window_s": 5,
+      "hop_s": 0.75,
+      "source": "User-supplied synthetic demo"
+    },
+    {
+      "id": "ryder",
+      "video_number": 25,
+      "synthetic": true,
+      "model": "laion/humaneness-ears-base-medium",
+      "variant": "medium",
+      "window_s": 5,
+      "hop_s": 0.75,
+      "source": "LAION Voice Acting Explorer",
+      "voice": "Ryder",
+      "source_audio_url": "https://tts-agi-voice-acting-explorer.hf.space/api/audio/en--ryder--new-50--new50-020--090",
+      "dataset": "https://huggingface.co/datasets/laion/german-english-voice-acting-challenges",
+      "dataset_revision": "791fba1e4f1dfa1d443afffb0c451661f3181282",
+      "source_license": "CC BY 4.0, with upstream component terms retained",
+      "attribution": "LAION / Voice Acting Explorer",
+      "window_mean_display_scores": {
+        "Distress": 82.6118555944413,
+        "Vulnerability index": 99.77853577076083
+      }
+    },
+    {
+      "id": "killian",
+      "video_number": 31,
+      "synthetic": true,
+      "model": "laion/humaneness-ears-base-medium",
+      "variant": "medium",
+      "window_s": 5,
+      "hop_s": 0.75,
+      "source": "LAION Voice Acting Explorer",
+      "voice": "Killian",
+      "source_audio_url": "https://tts-agi-voice-acting-explorer.hf.space/api/audio/en--killian--pilot--laugh_speech--66d92dda3268",
+      "dataset": "https://huggingface.co/datasets/laion/german-english-voice-acting-challenges",
+      "dataset_revision": "791fba1e4f1dfa1d443afffb0c451661f3181282",
+      "source_license": "CC BY 4.0, with upstream component terms retained",
+      "attribution": "LAION / Voice Acting Explorer"
+    },
+    {
+      "id": "persephone",
+      "video_number": 38,
+      "synthetic": true,
+      "model": "laion/humaneness-ears-base-medium",
+      "variant": "medium",
+      "window_s": 5,
+      "hop_s": 0.75,
+      "source": "LAION Voice Acting Explorer",
+      "voice": "Persephone",
+      "source_audio_url": "https://tts-agi-voice-acting-explorer.hf.space/api/audio/en--persephone--original-16--laugh_speech--066",
+      "dataset": "https://huggingface.co/datasets/laion/german-english-voice-acting-challenges",
+      "dataset_revision": "791fba1e4f1dfa1d443afffb0c451661f3181282",
+      "source_license": "CC BY 4.0, with upstream component terms retained",
+      "attribution": "LAION / Voice Acting Explorer",
+      "window_mean_display_scores": {
+        "Amusement": 85.05173402532533,
+        "Playful delivery": 65.19370375484914
+      }
+    },
+    {
+      "id": "elara",
+      "video_number": 42,
+      "synthetic": true,
+      "model": "laion/humaneness-ears-base-medium",
+      "variant": "medium",
+      "window_s": 5,
+      "hop_s": 0.75,
+      "source": "LAION Voice Acting Explorer",
+      "voice": "Elara",
+      "source_audio_url": "https://tts-agi-voice-acting-explorer.hf.space/api/audio/en--elara--original-16--sob_speech--088",
+      "dataset": "https://huggingface.co/datasets/laion/german-english-voice-acting-challenges",
+      "dataset_revision": "791fba1e4f1dfa1d443afffb0c451661f3181282",
+      "source_license": "CC BY 4.0, with upstream component terms retained",
+      "attribution": "LAION / Voice Acting Explorer"
+    }
+  ]
+}
