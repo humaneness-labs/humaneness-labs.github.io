@@ -49,6 +49,36 @@ python3 tools/extract_ears_outputs.py docs/assets/js/ears-data.js
 The ring on the homepage release card is a static SVG built from the same data
 (one tick per output, length from Medium's r).
 
+#### Release film and selected voice demos
+
+Release 01 embeds Intro V2 beside the opening text, three contrasting performances
+through the article (Persephone, Original 02, Ryder), and five further recordings
+in the gallery. The original article copy and output explorer are retained.
+
+`docs/assets/css/ears-media.css` and `docs/assets/js/ears-media.js` add native
+H.264/AAC players. Playback is opt-in; all videos use `preload="none"`, gallery
+players receive a source only when opened, and starting one video pauses the
+others. Gallery dialogs support Escape, return focus to their trigger, and release
+their media source on close. Without JavaScript, inline native controls and
+direct gallery video links remain usable.
+
+The release film is 720p (about 8.2 MB instead of the 74 MB master). The eight
+demos retain 1080p for the small prediction labels and are about 1.6–4.4 MB each.
+All MP4s have their `moov` atom at the start for progressive playback; lightweight
+WebP posters reserve the player size before playback. Originals are never changed.
+Regenerate these assets from the approved local master and `selection/` folder:
+
+```sh
+python3 tools/prepare_ears_media.py /path/to/humaneness
+```
+
+The media manifest records source hashes, output dimensions and byte sizes.
+Visible example summary scores are rounded averages of the displayed sliding
+windows; vulnerability uses the same clipped training-reference index as the
+videos. These are model estimates on a 0–100 display scale, not probabilities.
+All selected performances are synthetic. Source and curation credits appear
+beside the gallery.
+
 ### PerformanceNet release
 
 `docs/assets/css/performancenet.css` and `docs/assets/js/performancenet.js` turn

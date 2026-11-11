@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="../../assets/css/main.css?v=380a3c6ade99">
 <link rel="stylesheet" href="../../assets/css/blog.css?v=b44b9e291b29">
 <link rel="stylesheet" href="../../assets/css/ears.css?v=b9179ea980cc">
+<link rel="stylesheet" href="../../assets/css/ears-media.css?v=0b4c751c55ec">
 </head>
 <body class="ea-page">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -33,9 +34,21 @@
       <p class="ea-hero__intro ea-rise">Humaneness Labs is a new research group within LAION, building the behavior layer for AI. Our first release is <strong>Humaneness Ears</strong>: open audio encoders that hear emotion, voice, and the small sounds between words — in a single forward pass.</p>
       <div class="actions ea-rise"><a class="button button--primary" href="https://laion-humaneness-ears-atlas.static.hf.space/">Explore the listening atlas ↗</a><a class="button" href="#pass">See how it listens ↓</a></div>
     </div>
-    <figure class="ea-ring ea-rise" aria-label="A ring of 192 marks, one for each score Humaneness Ears predicts from a single recording.">
-      <canvas data-ring aria-hidden="true"></canvas>
-      <figcaption><strong>192</strong><span>scores from one forward pass</span></figcaption>
+    <figure class="ea-intro ea-rise">
+      <p class="eyebrow ea-intro__eyebrow">The release film</p>
+      <div class="ea-player" data-video-player>
+      <video controls playsinline preload="none" poster="../../assets/video/humaneness-ears/intro.webp" width="1280" height="720" aria-label="Introducing Humaneness Ears">
+        <source src="../../assets/video/humaneness-ears/intro.mp4" type="video/mp4">
+        <a href="../../assets/video/humaneness-ears/intro.mp4">Watch Introducing Humaneness Ears</a>
+      </video>
+      <button class="ea-player__cover" type="button" data-video-play aria-label="Play Introducing Humaneness Ears" hidden>
+        <span class="ea-player__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 19 12 9 18.5Z" fill="currentColor"/></svg></span>
+        <span class="ea-player__prompt">Watch the release film</span>
+        <span class="ea-player__duration" aria-hidden="true">1:12</span>
+      </button>
+    </div>
+    <p class="ea-media-error" role="status" data-video-error hidden>Playback is unavailable. <a href="../../assets/video/humaneness-ears/intro.mp4">Open the video directly ↗</a></p>
+      <figcaption><strong>Introducing Humaneness Ears</strong><span>Let AI hear beyond the words.</span></figcaption>
     </figure>
   </div>
 </section>
@@ -74,6 +87,32 @@
     <p data-reveal>Voice reveals far more than words. Timing, breath, rhythm, effort, hesitation, and tiny shifts in articulation all expose what is happening beneath the surface. That is why our research starts here.</p>
     <p data-reveal style="--i:1">Humaneness Ears is the perception layer: it turns a recording into a rich, structured description of how something was said. It does not transcribe, caption, or generate speech.</p>
   </div>
+</section>
+
+<section class="ea-shell ea-sample" id="sample-persephone" aria-labelledby="sample-persephone-title">
+  <div class="ea-sample__copy" data-reveal>
+    <p class="eyebrow">Listen 01 · Amusement & playfulness</p>
+    <h2 id="sample-persephone-title">A story that <em>can’t stop laughing.</em></h2>
+    <p>A prize-winning flower, a punch bowl, and laughter that keeps getting in the way. Hear how amusement and playful delivery travel together.</p>
+    <dl class="ea-sample__scores" aria-label="Average display scores across the analysis windows"><div><dt>Amusement</dt><dd>85<small>/ 100</small></dd></div><div><dt>Playful delivery</dt><dd>65<small>/ 100</small></dd></div></dl>
+    <p class="ea-sample__score-note">Average display scores · model estimates</p>
+  </div>
+  <figure class="ea-sample__media" data-reveal>
+    <div class="ea-player" data-video-player>
+      <video controls playsinline preload="none" poster="../../assets/video/humaneness-ears/persephone.webp" width="1920" height="1080" aria-label="Persephone — Amusement & playfulness">
+        <source src="../../assets/video/humaneness-ears/persephone.mp4" type="video/mp4">
+        <a href="../../assets/video/humaneness-ears/persephone.mp4">Watch Persephone — Amusement & playfulness</a>
+      </video>
+      <button class="ea-player__cover" type="button" data-video-play aria-label="Play Persephone — Amusement & playfulness" hidden>
+        <span class="ea-player__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 19 12 9 18.5Z" fill="currentColor"/></svg></span>
+        <span class="ea-player__prompt">Listen to this voice</span>
+        <span class="ea-player__duration" aria-hidden="true">0:37</span>
+      </button>
+    </div>
+    <p class="ea-media-error" role="status" data-video-error hidden>Playback is unavailable. <a href="../../assets/video/humaneness-ears/persephone.mp4">Open the video directly ↗</a></p>
+    <figcaption><span>Persephone</span><span>Synthetic voice · 0:37</span></figcaption>
+  </figure>
+  <p class="ea-media-note">The videos show 5-second sliding-window estimates on a 0–100 display scale: emotion/style intensities and training-reference indices for voice attributes. These are model estimates, not probabilities. All eight performances are synthetic.</p>
 </section>
 
 <section class="ea-pass" id="pass" aria-labelledby="pass-title">
@@ -172,6 +211,32 @@
   </div>
 </section>
 
+<section class="ea-shell ea-sample ea-sample--reverse" id="sample-anger" aria-labelledby="sample-anger-title">
+  <div class="ea-sample__copy" data-reveal>
+    <p class="eyebrow">Listen 02 · Anger & intensity</p>
+    <h2 id="sample-anger-title">The same signal. <em>A different temperature.</em></h2>
+    <p>Now listen to the contrast: a forceful, dramatic delivery with high anger and irritation estimates. The voice carries much more than the words.</p>
+    <dl class="ea-sample__scores" aria-label="Average display scores across the analysis windows"><div><dt>Anger</dt><dd>78<small>/ 100</small></dd></div><div><dt>Dramatic delivery</dt><dd>74<small>/ 100</small></dd></div></dl>
+    <p class="ea-sample__score-note">Average display scores · model estimates</p>
+  </div>
+  <figure class="ea-sample__media" data-reveal>
+    <div class="ea-player" data-video-player>
+      <video controls playsinline preload="none" poster="../../assets/video/humaneness-ears/anger.webp" width="1920" height="1080" aria-label="Original 02 — Anger & intensity">
+        <source src="../../assets/video/humaneness-ears/anger.mp4" type="video/mp4">
+        <a href="../../assets/video/humaneness-ears/anger.mp4">Watch Original 02 — Anger & intensity</a>
+      </video>
+      <button class="ea-player__cover" type="button" data-video-play aria-label="Play Original 02 — Anger & intensity" hidden>
+        <span class="ea-player__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 19 12 9 18.5Z" fill="currentColor"/></svg></span>
+        <span class="ea-player__prompt">Listen to this voice</span>
+        <span class="ea-player__duration" aria-hidden="true">0:19</span>
+      </button>
+    </div>
+    <p class="ea-media-error" role="status" data-video-error hidden>Playback is unavailable. <a href="../../assets/video/humaneness-ears/anger.mp4">Open the video directly ↗</a></p>
+    <figcaption><span>Original 02</span><span>Synthetic voice · 0:19</span></figcaption>
+  </figure>
+
+</section>
+
 <section class="ea-shell ea-explore" id="outputs" aria-labelledby="explore-title">
   <div class="ea-explore__head">
     <p class="eyebrow" data-reveal>All 192 outputs</p>
@@ -215,6 +280,32 @@
   </div>
 </section>
 
+<section class="ea-shell ea-sample" id="sample-ryder" aria-labelledby="sample-ryder-title">
+  <div class="ea-sample__copy" data-reveal>
+    <p class="eyebrow">Listen 03 · Distress & vulnerability</p>
+    <h2 id="sample-ryder-title">When a voice <em>begins to break.</em></h2>
+    <p>A short plea, broken by breath catches and sobs. Listen to the small sounds between phrases while the voice and emotion estimates shift.</p>
+    <dl class="ea-sample__scores" aria-label="Average display scores across the analysis windows"><div><dt>Distress</dt><dd>83<small>/ 100</small></dd></div><div><dt>Vulnerability index</dt><dd>100<small>/ 100</small></dd></div></dl>
+    <p class="ea-sample__score-note">Average display scores · model estimates</p>
+  </div>
+  <figure class="ea-sample__media" data-reveal>
+    <div class="ea-player" data-video-player>
+      <video controls playsinline preload="none" poster="../../assets/video/humaneness-ears/ryder.webp" width="1920" height="1080" aria-label="Ryder — Distress & vulnerability">
+        <source src="../../assets/video/humaneness-ears/ryder.mp4" type="video/mp4">
+        <a href="../../assets/video/humaneness-ears/ryder.mp4">Watch Ryder — Distress & vulnerability</a>
+      </video>
+      <button class="ea-player__cover" type="button" data-video-play aria-label="Play Ryder — Distress & vulnerability" hidden>
+        <span class="ea-player__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 19 12 9 18.5Z" fill="currentColor"/></svg></span>
+        <span class="ea-player__prompt">Listen to this voice</span>
+        <span class="ea-player__duration" aria-hidden="true">0:14</span>
+      </button>
+    </div>
+    <p class="ea-media-error" role="status" data-video-error hidden>Playback is unavailable. <a href="../../assets/video/humaneness-ears/ryder.mp4">Open the video directly ↗</a></p>
+    <figcaption><span>Ryder</span><span>Synthetic voice · 0:14</span></figcaption>
+  </figure>
+
+</section>
+
 <section class="ea-shell ea-measured" aria-labelledby="measured-title">
   <div>
     <p class="eyebrow" data-reveal>Measured, honestly</p>
@@ -252,6 +343,43 @@
     </figure>
     <p class="small-note">CREMA-D and RAVDESS use small supervised adapters trained on the model’s 192 scores with actor cross-validation, not zero-shot predictions. The <a href="https://laion-whisper-base-small-emotion-voice-burst.static.hf.space/benchmark.html">full benchmark report</a> compares every target and baseline.</p>
   </div>
+</section>
+
+<section class="ea-shell ea-gallery" id="more-voices" aria-labelledby="gallery-title">
+  <div class="ea-gallery__head" data-reveal><div><p class="eyebrow">Keep listening · 5 more samples</p><h2 id="gallery-title">More voices. <em>More shades.</em></h2></div><p>A quieter thought, a laugh, a moment of vulnerability. Explore the rest of the selection.</p></div>
+  <ul class="ea-gallery__grid">
+    <li class="ea-gallery__item" data-reveal>
+      <a class="ea-gallery__link" href="../../assets/video/humaneness-ears/reflection.mp4" data-gallery-video data-title="Quiet contemplation" data-voice="Original 01" data-description="Contemplative · conversational" data-poster="../../assets/video/humaneness-ears/reflection.webp" aria-label="Watch Quiet contemplation, Original 01, 0:31">
+        <span class="ea-gallery__image"><img src="../../assets/video/humaneness-ears/reflection.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="ea-gallery__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 19 12 9 18.5Z" fill="currentColor"/></svg></span><span class="ea-player__duration">0:31</span></span>
+        <span class="ea-gallery__voice">Original 01</span><h3>Quiet contemplation</h3><span class="ea-gallery__description">Contemplative · conversational</span>
+      </a>
+    </li>
+    <li class="ea-gallery__item" data-reveal>
+      <a class="ea-gallery__link" href="../../assets/video/humaneness-ears/killian.mp4" data-gallery-video data-title="One word, a roomful of laughter" data-voice="Killian" data-description="Amused · casual" data-poster="../../assets/video/humaneness-ears/killian.webp" aria-label="Watch One word, a roomful of laughter, Killian, 0:27">
+        <span class="ea-gallery__image"><img src="../../assets/video/humaneness-ears/killian.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="ea-gallery__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 19 12 9 18.5Z" fill="currentColor"/></svg></span><span class="ea-player__duration">0:27</span></span>
+        <span class="ea-gallery__voice">Killian</span><h3>One word, a roomful of laughter</h3><span class="ea-gallery__description">Amused · casual</span>
+      </a>
+    </li>
+    <li class="ea-gallery__item" data-reveal>
+      <a class="ea-gallery__link" href="../../assets/video/humaneness-ears/elara.mp4" data-gallery-video data-title="The photograph in the last box" data-voice="Elara" data-description="Tearful · vulnerable" data-poster="../../assets/video/humaneness-ears/elara.webp" aria-label="Watch The photograph in the last box, Elara, 0:30">
+        <span class="ea-gallery__image"><img src="../../assets/video/humaneness-ears/elara.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="ea-gallery__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 19 12 9 18.5Z" fill="currentColor"/></svg></span><span class="ea-player__duration">0:30</span></span>
+        <span class="ea-gallery__voice">Elara</span><h3>The photograph in the last box</h3><span class="ea-gallery__description">Tearful · vulnerable</span>
+      </a>
+    </li>
+    <li class="ea-gallery__item" data-reveal>
+      <a class="ea-gallery__link" href="../../assets/video/humaneness-ears/fear.mp4" data-gallery-video data-title="A voice under pressure" data-voice="Original 03" data-description="Distressed · dramatic" data-poster="../../assets/video/humaneness-ears/fear.webp" aria-label="Watch A voice under pressure, Original 03, 0:18">
+        <span class="ea-gallery__image"><img src="../../assets/video/humaneness-ears/fear.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="ea-gallery__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 19 12 9 18.5Z" fill="currentColor"/></svg></span><span class="ea-player__duration">0:18</span></span>
+        <span class="ea-gallery__voice">Original 03</span><h3>A voice under pressure</h3><span class="ea-gallery__description">Distressed · dramatic</span>
+      </a>
+    </li>
+    <li class="ea-gallery__item" data-reveal>
+      <a class="ea-gallery__link" href="../../assets/video/humaneness-ears/softness.mp4" data-gallery-video data-title="A softer, tired delivery" data-voice="Original 04" data-description="Weary · quiet" data-poster="../../assets/video/humaneness-ears/softness.webp" aria-label="Watch A softer, tired delivery, Original 04, 0:19">
+        <span class="ea-gallery__image"><img src="../../assets/video/humaneness-ears/softness.webp" alt="" width="1280" height="720" loading="lazy" decoding="async"><span class="ea-gallery__play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5.5 19 12 9 18.5Z" fill="currentColor"/></svg></span><span class="ea-player__duration">0:19</span></span>
+        <span class="ea-gallery__voice">Original 04</span><h3>A softer, tired delivery</h3><span class="ea-gallery__description">Weary · quiet</span>
+      </a>
+    </li>
+  </ul>
+  <p class="ea-media-note">Synthetic performances · Humaneness Ears Medium · 0–100 display scores. Curated voices from the <a href="https://huggingface.co/spaces/laion/voice-acting-explorer">LAION Voice Acting Explorer</a>; <a href="https://huggingface.co/datasets/laion/german-english-voice-acting-challenges">source performances and attribution</a>. Original 01–04 are supplied demo recordings.</p>
 </section>
 
 <section class="ea-get" aria-labelledby="get-title">
@@ -300,5 +428,12 @@ python inference.py clip.wav --model medium --device cpu</code></pre>
 </footer>
 <script src="../../assets/js/ears-data.js?v=11bb4acd1945" defer></script>
 <script src="../../assets/js/ears.js?v=1328e3c3978b" defer></script>
+<dialog class="ea-video-dialog" id="ea-video-dialog" aria-labelledby="ea-dialog-title" aria-describedby="ea-dialog-description">
+  <div class="ea-video-dialog__head"><div><p class="eyebrow" data-dialog-voice>Synthetic voice demo</p><h2 id="ea-dialog-title">Listen to a sample</h2></div><button type="button" data-dialog-close aria-label="Close video">Close <span aria-hidden="true">×</span></button></div>
+  <video controls playsinline preload="none" width="1920" height="1080" aria-labelledby="ea-dialog-title"></video>
+  <p id="ea-dialog-description"></p>
+  <p class="ea-media-error" role="status" data-video-error hidden>Playback is unavailable. <a data-dialog-fallback href="#more-voices">Open the video directly ↗</a></p>
+</dialog>
+<script src="../../assets/js/ears-media.js?v=b32424fc747c" defer></script>
 </body>
 </html>
