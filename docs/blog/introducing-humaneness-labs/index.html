@@ -14,7 +14,7 @@
 <link rel="preload" href="../../assets/fonts/instrument-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/main.css?v=380a3c6ade99">
 <link rel="stylesheet" href="../../assets/css/blog.css?v=b44b9e291b29">
-<link rel="stylesheet" href="../../assets/css/ears.css?v=77c6aa77b870">
+<link rel="stylesheet" href="../../assets/css/ears.css?v=9c0077dae79d">
 <link rel="stylesheet" href="../../assets/css/ears-media.css?v=0b4c751c55ec">
 </head>
 <body class="ea-page">
@@ -321,10 +321,22 @@
   </div>
   <div class="ea-bench" data-reveal>
     <div class="ea-bench__legend" aria-hidden="true"><span class="is-base">Base</span><span class="is-medium">Medium</span></div>
-    <figure>
+    <figure class="ea-bench__emonet" id="emonet-benchmark">
       <figcaption>EmoNet-Voice intensity · Pearson r</figcaption>
-      <div class="ea-bar" style="--v:.4340"><span>Base</span><i></i><b>0.434</b></div>
-      <div class="ea-bar is-medium" style="--v:.4512"><span>Medium</span><i></i><b>0.451</b></div>
+      <div class="ea-bench__group" role="group" aria-labelledby="emonet-matched-label">
+        <p class="ea-bench__group-label" id="emonet-matched-label">Matched evaluation · 12,000 clips</p>
+        <div class="ea-bar" style="--v:.4340"><span>Ears Base</span><i></i><b>0.434</b></div>
+        <div class="ea-bar is-medium" style="--v:.4512"><span>Ears Medium</span><i></i><b>0.451</b></div>
+        <div class="ea-bar is-reference" style="--v:.4488"><span>VoiceCLAP Large v2 probe</span><i></i><b>0.449</b></div>
+      </div>
+      <div class="ea-bench__group ea-bench__group--paper" role="group" aria-labelledby="emonet-paper-label">
+        <p class="ea-bench__group-label" id="emonet-paper-label">Published paper results</p>
+        <div class="ea-bar is-reference" style="--v:.421"><span>EmpathicInsight-Voice Large</span><i></i><b>0.421</b></div>
+        <div class="ea-bar is-reference" style="--v:.416"><span>Gemini 2.5 Pro</span><i></i><b>0.416</b></div>
+        <div class="ea-bar is-reference" style="--v:.414"><span>EmpathicInsight-Voice Small</span><i></i><b>0.414</b></div>
+        <div class="ea-bar is-reference" style="--v:.231"><span>Hume Voice</span><i></i><b>0.231</b></div>
+        <p class="small-note">The paper uses a broader benchmark and model-specific coverage. Hume Voice had a 5-second input limit, a narrower emotion mapping and a reported refusal rate of 39.16%. <a href="https://arxiv.org/html/2506.09827v3#S4.T5">EmoNet-Voice, Table 5&nbsp;↗</a></p>
+      </div>
     </figure>
     <figure>
       <figcaption>VoiceNet-Emo · mean Spearman ρ</figcaption>
