@@ -221,6 +221,18 @@
 .ea-bar i { height: .7rem; border-radius: .35rem; background: linear-gradient(90deg, rgb(143 199 255 / .55), rgb(143 199 255 / .55)) 0 0 / calc(var(--v) * 100%) 100% no-repeat, #1f2130; }
 .ea-bar.is-medium i { background: linear-gradient(90deg, var(--ea-accent), var(--ea-accent)) 0 0 / calc(var(--v) * 100%) 100% no-repeat, #1f2130; }
 .ea-bar b { color: var(--bone); font-weight: 400; text-align: right; font-variant-numeric: tabular-nums; }
+.ea-evidence { grid-column: 1 / -1; padding-top: 1.75rem; border-top: 1px solid var(--hairline); }
+.ea-evidence h3 { margin: 0 0 1.25rem; color: var(--bone); font: 500 clamp(1.4rem, 1.1rem + 1vw, 2rem)/1.15 var(--display); letter-spacing: -.025em; }
+.ea-evidence__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.ea-evidence article { padding: clamp(1rem, 2vw, 1.4rem); border: 1px solid var(--hairline); border-radius: 14px; background: #14151f; }
+.ea-evidence h4 { margin: 0; color: var(--bone); font: 500 1.2rem/1.2 var(--display); }
+.ea-evidence article p { margin: .75rem 0 0; color: var(--mute); font-size: .9rem; }
+.ea-evidence strong { color: var(--bone); }
+.ea-evidence > .small-note { margin: 1rem 0 0; max-width: 94ch; }
+
+@media (max-width: 850px) {
+  .ea-evidence__grid { grid-template-columns: minmax(0, 1fr); }
+}
 
 /* ---------- Get ---------- */
 .ea-get { padding-block: clamp(5rem, 10vw, 8rem); border-block: 1px solid var(--hairline); background: radial-gradient(60% 80% at 90% 0%, rgb(143 214 200 / .1), transparent 70%), radial-gradient(50% 70% at 0% 100%, rgb(180 166 255 / .08), transparent 70%), var(--ink-raise); }

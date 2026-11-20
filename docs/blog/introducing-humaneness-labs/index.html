@@ -14,7 +14,7 @@
 <link rel="preload" href="../../assets/fonts/instrument-sans-latin-variable.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="../../assets/css/main.css?v=380a3c6ade99">
 <link rel="stylesheet" href="../../assets/css/blog.css?v=b44b9e291b29">
-<link rel="stylesheet" href="../../assets/css/ears.css?v=b9179ea980cc">
+<link rel="stylesheet" href="../../assets/css/ears.css?v=77c6aa77b870">
 <link rel="stylesheet" href="../../assets/css/ears-media.css?v=0b4c751c55ec">
 </head>
 <body class="ea-page">
@@ -332,6 +332,11 @@
       <div class="ea-bar is-medium" style="--v:.4282"><span>Medium</span><i></i><b>0.428</b></div>
     </figure>
     <figure>
+      <figcaption>VoiceNet-Ext · mean Spearman ρ</figcaption>
+      <div class="ea-bar" style="--v:.1566"><span>Base</span><i></i><b>0.157</b></div>
+      <div class="ea-bar is-medium" style="--v:.1502"><span>Medium</span><i></i><b>0.150</b></div>
+    </figure>
+    <figure>
       <figcaption>CREMA-D · accuracy, supervised adapter</figcaption>
       <div class="ea-bar" style="--v:.6310"><span>Base</span><i></i><b>0.631</b></div>
       <div class="ea-bar is-medium" style="--v:.6423"><span>Medium</span><i></i><b>0.642</b></div>
@@ -343,6 +348,28 @@
     </figure>
     <p class="small-note">CREMA-D and RAVDESS use small supervised adapters trained on the model’s 192 scores with actor cross-validation, not zero-shot predictions. The <a href="https://laion-whisper-base-small-emotion-voice-burst.static.hf.space/benchmark.html">full benchmark report</a> compares every target and baseline.</p>
   </div>
+
+  <section class="ea-evidence" aria-labelledby="evidence-title">
+    <h3 id="evidence-title" data-reveal>How we measured it.</h3>
+    <div class="ea-evidence__grid">
+      <article data-reveal>
+        <h4>How strongly is the emotion heard?</h4>
+        <p>On EmoNet-Voice, we compare each model’s score for the queried emotion with the mean expert rating across 12,000 synthetic clips covering 40 emotions. Pearson <i>r</i> measures linear agreement. We map both scales to 0–10 without fitting to the benchmark labels.</p>
+        <p>For context, EmpathicInsight-Voice Large scored <strong>0.421</strong> and Gemini 2.5 Pro <strong>0.416</strong> on the paper’s broader evaluation, which also includes arousal and authenticity. In the matched 40-emotion comparison, Medium scores 0.451 and a VoiceCLAP Large v2 probe scores 0.449. <a href="https://arxiv.org/html/2506.09827v3#S4.T5">EmoNet-Voice, Table 5&nbsp;↗</a></p>
+      </article>
+      <article data-reveal>
+        <h4>Does it rank voices as listeners do?</h4>
+        <p>On VoiceNet, we rank clips by predicted emotion intensity or by how closely a delivery score matches the requested level. We compare those rankings with the share of raters who agreed with each prompt and average Spearman <i>ρ</i> across prompts. The evaluation covers 7,986 emotion items and 13,917 delivery items, each with at least two raters. The lower Ext scores show how difficult fine-grained delivery remains.</p>
+        <p>The paper reports <strong>0.372 / 0.148</strong> for VoiceCLAP-Large and <strong>0.031 / 0.060</strong> for LAION-CLAP (Emo / Ext). Those models rank audio–text similarity, and the paper uses a different Ext subset. <a href="https://arxiv.org/html/2609.32016v1#S4.T1">VoiceNet, Table 1&nbsp;↗</a></p>
+      </article>
+      <article data-reveal>
+        <h4>How useful are the scores for classification?</h4>
+        <p>For CREMA-D and RAVDESS, a small classifier learns to map the 192 Ears scores to emotion categories. In each outer fold, accuracy is measured on actors held out from adapter training and tuning.</p>
+        <p>Under the same adapter protocol, a VoiceCLAP Large v2 baseline reaches <strong>72.41%</strong> and <strong>76.94%</strong>, respectively. Matching graded judgments and identifying a single acted emotion measure different abilities. <a href="https://laion-whisper-base-small-emotion-voice-burst.static.hf.space/benchmark.html#study-public">Matched comparisons&nbsp;↗</a></p>
+      </article>
+    </div>
+    <p class="small-note" data-reveal>These results describe agreement with human judgments on the evaluated samples. The release documents the benchmark cuts and adapter folds, and notes that overlap with upstream training data was not exhaustively audited. <a href="https://huggingface.co/laion/humaneness-ears-base-medium#public-human-label-benchmarks">Evaluation details and source files&nbsp;↗</a></p>
+  </section>
 </section>
 
 <section class="ea-shell ea-gallery" id="more-voices" aria-labelledby="gallery-title">
